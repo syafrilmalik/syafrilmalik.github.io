@@ -5,11 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Syafril Malik (@syafrilmalikkk) • Instagram Profile & Portfolio</title>
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- Google Font Plus Jakarta Sans & Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <script>
@@ -37,37 +34,97 @@
         }
     </script>
     <style>
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #fafafa;
-        }
-        .dark ::-webkit-scrollbar-track {
-            background: #000000;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #dbdbdb;
-            border-radius: 3px;
-        }
-        .dark ::-webkit-scrollbar-thumb {
-            background: #262626;
-        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #fafafa; }
+        .dark ::-webkit-scrollbar-track { background: #000000; }
+        ::-webkit-scrollbar-thumb { background: #dbdbdb; border-radius: 3px; }
+        .dark ::-webkit-scrollbar-thumb { background: #262626; }
         .story-ring {
             background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+        .glass-3d {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        .dark .glass-3d {
+            background: rgba(18, 18, 18, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(255, 255, 255, 0.05);
+        }
+        .card-3d-hover {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .card-3d-hover:hover {
+            transform: translateY(-8px) scale(1.02) rotateX(2deg);
+            box-shadow: 0 30px 60px -15px rgba(0, 149, 246, 0.3);
+        }
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(1deg); }
+        }
+        .animate-float {
+            animation: floatSlow 6s ease-in-out infinite;
         }
     </style>
 </head>
 <body class="bg-ig-bg text-slate-900 font-sans antialiased transition-colors duration-300 dark:bg-ig-darkbg dark:text-slate-100 min-h-screen flex flex-col selection:bg-ig-blue selection:text-white">
 
-    <header class="sticky top-0 z-50 bg-white/90 dark:bg-black/90 backdrop-blur-md border-b border-ig-border dark:border-ig-darkborder transition-all">
+    <!-- Frieren Welcome Modal -->
+    <div id="welcomeFrierenModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md transition-all duration-500">
+        <div class="glass-3d rounded-3xl max-w-md w-full p-6 text-center space-y-6 relative shadow-2xl animate-float border border-ig-blue/30 overflow-hidden">
+            <div class="absolute -top-24 -left-24 w-48 h-48 bg-ig-blue/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-24 -right-24 w-48 h-48 bg-purple-500/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <button onclick="closeFrierenModal()" class="absolute top-4 right-4 p-2 rounded-full bg-slate-200/80 dark:bg-zinc-800 hover:bg-slate-300 dark:hover:bg-zinc-700 transition-colors z-10">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <div class="relative w-32 h-32 mx-auto rounded-full p-1.5 story-ring shadow-xl">
+                <div class="w-full h-full rounded-full bg-slate-900 overflow-hidden relative">
+                    <img src="https://placehold.co/400x400/93c5fd/1e3a8a?text=✨+Frieren" alt="Frieren Welcoming" class="w-full h-full object-cover">
+                </div>
+                <div class="absolute -bottom-1 -right-1 bg-amber-400 text-slate-900 font-extrabold text-[10px] px-2 py-0.5 rounded-full shadow border border-white">
+                    Mage ✨
+                </div>
+            </div>
+
+            <div class="space-y-2 relative z-10">
+                <div class="inline-block px-3 py-1 rounded-full bg-ig-blue/10 text-ig-blue dark:text-sky-400 text-xs font-bold uppercase tracking-wider mb-1">
+                    Special Greeting
+                </div>
+                <h2 class="text-2xl font-extrabold tracking-tight bg-gradient-to-r from-ig-blue via-purple-500 to-rose-500 bg-clip-text text-transparent">
+                    Halo, Selamat Datang!
+                </h2>
+                <p class="text-sm text-slate-600 dark:text-zinc-300 leading-relaxed px-2">
+                    "Frieren mengucapkan selamat datang di Portofolio Profesional & Profil Instagram <b>Syafril Malik</b>. Nikmati pengalaman menjelajah proyek IT & kirim pesan di buku tamu real-time!"
+                </p>
+            </div>
+
+            <div class="pt-2 relative z-10">
+                <button onclick="closeFrierenModal()" class="w-full py-3.5 rounded-2xl bg-gradient-to-r from-ig-blue to-purple-600 hover:from-ig-hover hover:to-purple-700 text-white font-bold text-sm shadow-lg shadow-ig-blue/30 transition-all transform active:scale-95">
+                    Masuk ke Profil ✨
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <header class="sticky top-0 z-45 bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-ig-border dark:border-ig-darkborder transition-all">
         <div class="max-w-4xl mx-auto px-4 h-14 flex items-center justify-between">
             <a href="#profile" class="flex items-center space-x-2 font-bold text-lg tracking-tight">
                 <span class="bg-gradient-to-r from-amber-500 via-rose-500 to-purple-600 bg-clip-text text-transparent font-extrabold text-xl">syafrilmalikkk</span>
                 <span class="inline-flex items-center px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-ig-blue text-white">Verified</span>
             </a>
 
-            <div class="flex items-center space-x-3">
+            <div class="flex items-center space-x-2">
+                <button onclick="openPhotoManagerModal()" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-slate-100 dark:bg-zinc-800 hover:bg-slate-200 dark:hover:bg-zinc-700 text-xs font-semibold transition-colors" title="Ubah Foto Profil & Portofolio">
+                    <i data-lucide="image-plus" class="w-4 h-4 text-ig-blue"></i>
+                    <span class="hidden sm:inline">Ubah Foto</span>
+                </button>
                 <button id="themeToggle" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-zinc-800 transition-colors" aria-label="Toggle Theme">
                     <i data-lucide="sun" class="w-5 h-5 hidden dark:block text-amber-400"></i>
                     <i data-lucide="moon" class="w-5 h-5 block dark:hidden text-slate-700"></i>
@@ -80,144 +137,161 @@
     </header>
 
     <main class="flex-grow max-w-4xl mx-auto w-full px-4 pt-6 pb-16">
-        <section id="profile" class="pb-6 border-b border-ig-border dark:border-ig-darkborder">
-            <div class="grid grid-cols-3 gap-4 md:gap-8 items-center">
-                
-                <!-- Profile Picture with Instagram Story Gradient Ring -->
-                <div class="flex justify-center">
-                    <div class="relative p-[3px] rounded-full story-ring shadow-lg cursor-pointer group" onclick="showStoryModal()">
-                        <div class="w-20 h-20 sm:w-36 sm:h-36 rounded-full bg-white dark:bg-black p-[2px] overflow-hidden">
-                            <img src="https://placehold.co/400x400/0095f6/ffffff?text=Syafril+Malik" alt="Syafril Malik Profile" class="w-full h-full object-cover rounded-full group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/400x400?text=SM'">
-                        </div>
-                        <div class="absolute bottom-1 right-1 w-6 h-6 bg-ig-blue text-white rounded-full flex items-center justify-center border-2 border-white dark:border-black text-xs font-bold shadow">
-                            +
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Profile Bio & Actions -->
-                <div class="col-span-2 space-y-4">
-                    <div class="flex flex-col sm:flex-row sm:items-center gap-3">
-                        <h1 class="text-xl sm:text-2xl font-semibold tracking-tight">Syafril Malik</h1>
-                        <div class="flex items-center space-x-2">
-                            <a href="https://wa.me/6281545842290" target="_blank" rel="noopener noreferrer" class="px-4 py-1.5 rounded-lg bg-ig-blue hover:bg-ig-hover text-white text-xs sm:text-sm font-semibold transition-colors text-center shadow-sm">
-                                WhatsApp
-                            </a>
-                            <a href="https://t.me/6281545842290" target="_blank" rel="noopener noreferrer" class="px-4 py-1.5 rounded-lg border border-ig-border dark:border-ig-darkborder hover:bg-slate-50 dark:hover:bg-zinc-900 text-xs sm:text-sm font-semibold transition-colors text-center">
-                                Telegram
-                            </a>
+        <section id="profile" class="pb-8 border-b border-ig-border dark:border-ig-darkborder">
+            <div class="glass-3d rounded-3xl p-6 sm:p-8 shadow-xl">
+                <div class="grid grid-cols-3 gap-4 md:gap-8 items-center">
+                    
+                    <div class="flex justify-center">
+                        <div class="relative p-[3px] rounded-full story-ring shadow-lg cursor-pointer group" onclick="showStoryModal()">
+                            <div class="w-20 h-20 sm:w-36 sm:h-36 rounded-full bg-white dark:bg-black p-[2px] overflow-hidden">
+                                <img id="profileImageDisplay" src="https://lh3.googleusercontent.com/d/1X3UUiHZFCF_82G43u9sGYjzpsk2zmc_C=s1000" alt="Syafril Malik Profile" class="w-full h-full object-cover rounded-full group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/400x400?text=SM'">
+                            </div>
+                            <div class="absolute bottom-1 right-1 w-6 h-6 bg-ig-blue text-white rounded-full flex items-center justify-center border-2 border-white dark:border-black text-xs font-bold shadow">
+                                +
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Stats Row -->
-                    <div class="flex space-x-6 text-sm sm:text-base">
-                        <div><strong class="font-bold">4</strong> <span class="text-slate-500 dark:text-zinc-400">proyek</span></div>
-                        <div><strong class="font-bold" id="commentCountDisplay">0</strong> <span class="text-slate-500 dark:text-zinc-400">komentar</span></div>
-                        <div><strong class="font-bold">1998</strong> <span class="text-slate-500 dark:text-zinc-400">born</span></div>
+                    <div class="col-span-2 space-y-4">
+                        <div class="flex flex-col sm:flex-row sm:items-center gap-3">
+                            <h1 class="text-xl sm:text-2xl font-extrabold tracking-tight">Syafril Malik</h1>
+                            <div class="flex items-center space-x-2">
+                                <a href="https://wa.me/6281545842290" target="_blank" rel="noopener noreferrer" class="px-4 py-1.5 rounded-xl bg-ig-blue hover:bg-ig-hover text-white text-xs sm:text-sm font-semibold transition-colors text-center shadow-md shadow-ig-blue/30">
+                                    WhatsApp
+                                </a>
+                                <a href="https://t.me/6281545842290" target="_blank" rel="noopener noreferrer" class="px-4 py-1.5 rounded-xl border border-ig-border dark:border-ig-darkborder hover:bg-slate-100 dark:hover:bg-zinc-800 text-xs sm:text-sm font-semibold transition-colors text-center">
+                                    Telegram
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="flex space-x-6 text-sm sm:text-base">
+                            <div><strong class="font-bold">4</strong> <span class="text-slate-500 dark:text-zinc-400">proyek</span></div>
+                            <div><strong class="font-bold" id="commentCountDisplay">1</strong> <span class="text-slate-500 dark:text-zinc-400">komentar</span></div>
+                            <div><strong class="font-bold">1998</strong> <span class="text-slate-500 dark:text-zinc-400">born</span></div>
+                        </div>
+
+                        <div class="space-y-1 text-sm">
+                            <p class="font-bold text-slate-800 dark:text-zinc-200">IT Specialist & IT Project Management Professional</p>
+                            <p class="text-slate-600 dark:text-zinc-400 leading-relaxed">
+                                Informatics Engineering Alumni UNPAM (2022). Passionate about web development, network infrastructure, & database systems. Enjoy cooking & continuous learning! 🍳💻
+                            </p>
+                            <div class="pt-1 flex flex-wrap gap-x-4 gap-y-1 text-xs font-medium text-ig-blue">
+                                <a href="mailto:syafrilmalik11@gmail.com" class="hover:underline flex items-center space-x-1">
+                                    <i data-lucide="mail" class="w-3.5 h-3.5 inline"></i>
+                                    <span>syafrilmalik11@gmail.com</span>
+                                </a>
+                                <span class="text-slate-400">•</span>
+                                <span class="text-slate-500 dark:text-zinc-400">South Tangerang, ID</span>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Bio Details -->
-                    <div class="space-y-1 text-sm">
-                        <p class="font-semibold text-slate-800 dark:text-zinc-200">IT Specialist & IT Project Management Professional</p>
-                        <p class="text-slate-600 dark:text-zinc-400 leading-relaxed">
-                            Informatics Engineering Alumni UNPAM (2022). Passionate about web development, network infrastructure, & database systems. Enjoy cooking & continuous learning! 🍳💻
-                        </p>
-                        <div class="pt-1 flex flex-wrap gap-x-4 gap-y-1 text-xs font-medium text-ig-blue">
-                            <a href="mailto:syafrilmalik11@gmail.com" class="hover:underline flex items-center space-x-1">
-                                <i data-lucide="mail" class="w-3.5 h-3.5 inline"></i>
-                                <span>syafrilmalik11@gmail.com</span>
-                            </a>
-                            <span class="text-slate-400">•</span>
-                            <span class="text-slate-500 dark:text-zinc-400">South Tangerang, ID</span>
-                        </div>
-                    </div>
                 </div>
 
-            </div>
-
-            <!-- Highlights / Stories Row -->
-            <div class="mt-8 flex space-x-6 overflow-x-auto pb-2 scrollbar-none">
-                <div class="flex flex-col items-center space-y-1.5 cursor-pointer flex-shrink-0" onclick="filterPortfolio('all')">
-                    <div class="w-16 h-16 rounded-full p-[2px] story-ring">
-                        <div class="w-full h-full rounded-full bg-white dark:bg-black p-1 flex items-center justify-center bg-blue-50 dark:bg-zinc-900 text-ig-blue">
-                            <i data-lucide="grid" class="w-6 h-6"></i>
+                <div class="mt-8 flex space-x-6 overflow-x-auto pb-2 scrollbar-none">
+                    <div class="flex flex-col items-center space-y-1.5 cursor-pointer flex-shrink-0 group" onclick="filterPortfolio('all')">
+                        <div class="w-16 h-16 rounded-full p-[2px] story-ring group-hover:scale-105 transition-transform">
+                            <div class="w-full h-full rounded-full bg-white dark:bg-black p-1 flex items-center justify-center bg-blue-50 dark:bg-zinc-900 text-ig-blue">
+                                <i data-lucide="grid" class="w-6 h-6"></i>
+                            </div>
                         </div>
+                        <span class="text-xs font-semibold">Semua</span>
                     </div>
-                    <span class="text-xs font-medium">Semua</span>
-                </div>
-                <div class="flex flex-col items-center space-y-1.5 cursor-pointer flex-shrink-0" onclick="filterPortfolio('jurnal')">
-                    <div class="w-16 h-16 rounded-full p-[2px] story-ring">
-                        <div class="w-full h-full rounded-full bg-white dark:bg-black p-1 overflow-hidden">
-                            <img src="https://placehold.co/100x100/3b82f6/ffffff?text=Jurnal" alt="Jurnal" class="w-full h-full object-cover rounded-full">
+                    <div class="flex flex-col items-center space-y-1.5 cursor-pointer flex-shrink-0 group" onclick="filterPortfolio('jurnal')">
+                        <div class="w-16 h-16 rounded-full p-[2px] story-ring group-hover:scale-105 transition-transform">
+                            <div class="w-full h-full rounded-full bg-white dark:bg-black p-1 overflow-hidden">
+                                <img src="https://placehold.co/100x100/3b82f6/ffffff?text=Jurnal" alt="Jurnal" class="w-full h-full object-cover rounded-full">
+                            </div>
                         </div>
+                        <span class="text-xs font-semibold">E-Jurnal</span>
                     </div>
-                    <span class="text-xs font-medium">E-Jurnal</span>
-                </div>
-                <div class="flex flex-col items-center space-y-1.5 cursor-pointer flex-shrink-0" onclick="filterPortfolio('modul')">
-                    <div class="w-16 h-16 rounded-full p-[2px] story-ring">
-                        <div class="w-full h-full rounded-full bg-white dark:bg-black p-1 overflow-hidden">
-                            <img src="https://placehold.co/100x100/6366f1/ffffff?text=Modul" alt="Modul" class="w-full h-full object-cover rounded-full">
+                    <div class="flex flex-col items-center space-y-1.5 cursor-pointer flex-shrink-0 group" onclick="filterPortfolio('modul')">
+                        <div class="w-16 h-16 rounded-full p-[2px] story-ring group-hover:scale-105 transition-transform">
+                            <div class="w-full h-full rounded-full bg-white dark:bg-black p-1 overflow-hidden">
+                                <img src="https://placehold.co/100x100/6366f1/ffffff?text=Modul" alt="Modul" class="w-full h-full object-cover rounded-full">
+                            </div>
                         </div>
+                        <span class="text-xs font-semibold">Modul IT</span>
                     </div>
-                    <span class="text-xs font-medium">Modul IT</span>
-                </div>
-                <div class="flex flex-col items-center space-y-1.5 cursor-pointer flex-shrink-0" onclick="filterPortfolio('infra')">
-                    <div class="w-16 h-16 rounded-full p-[2px] story-ring">
-                        <div class="w-full h-full rounded-full bg-white dark:bg-black p-1 overflow-hidden">
-                            <img src="https://placehold.co/100x100/0ea5e9/ffffff?text=Server" alt="Infra" class="w-full h-full object-cover rounded-full">
+                    <div class="flex flex-col items-center space-y-1.5 cursor-pointer flex-shrink-0 group" onclick="filterPortfolio('infra')">
+                        <div class="w-16 h-16 rounded-full p-[2px] story-ring group-hover:scale-105 transition-transform">
+                            <div class="w-full h-full rounded-full bg-white dark:bg-black p-1 overflow-hidden">
+                                <img src="https://placehold.co/100x100/0ea5e9/ffffff?text=Server" alt="Infra" class="w-full h-full object-cover rounded-full">
+                            </div>
                         </div>
+                        <span class="text-xs font-semibold">Infra</span>
                     </div>
-                    <span class="text-xs font-medium">Infra</span>
                 </div>
             </div>
         </section>
 
-        <div class="flex justify-center border-b border-ig-border dark:border-ig-darkborder text-xs font-semibold tracking-wider uppercase">
+        <div class="flex justify-center border-b border-ig-border dark:border-ig-darkborder text-xs font-bold tracking-wider uppercase mt-6">
             <button onclick="switchTab('posts')" id="tabPostsBtn" class="flex items-center space-x-2 py-4 px-6 border-b-2 border-slate-900 dark:border-white text-slate-900 dark:text-white transition-colors">
                 <i data-lucide="layout-grid" class="w-4 h-4"></i>
                 <span>POSTINGAN PORTOFOLIO</span>
             </button>
             <button onclick="switchTab('comments')" id="tabCommentsBtn" class="flex items-center space-x-2 py-4 px-6 border-b-2 border-transparent text-slate-400 hover:text-slate-700 dark:hover:text-zinc-200 transition-colors">
                 <i data-lucide="message-square" class="w-4 h-4"></i>
-                <span>BUKU TAMU & KOMENTAR</span>
+                <span>BUKU TAMU & KOMENTAR (<span id="tabCommentCount">0</span>)</span>
             </button>
         </div>
 
-        <div id="postsTabContent" class="mt-4 grid grid-cols-3 gap-1 md:gap-4">
+        <div id="postsTabContent" class="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             
-            <!-- Project 1 -->
-            <div class="portfolio-card relative aspect-square group bg-slate-100 dark:bg-zinc-900 overflow-hidden cursor-pointer" data-category="jurnal" onclick="openProjectModal('E-JURNAL UNPAM', 'Platform publikasi jurnal ilmiah Teknik Informatika UNPAM. Menyediakan arsip makalah, pengelolaan naskah akademik, dan akses terbuka bagi civitas akademika.', 'http://openjournal.unpam.ac.id/index.php/informatika', 'https://placehold.co/600x600/3b82f6/ffffff?text=E-JURNAL')">
-                <img src="https://placehold.co/400x400/3b82f6/ffffff?text=E-JURNAL" alt="E-Jurnal" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/400x400?text=Jurnal'">
-                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center space-x-6 text-white font-bold text-sm">
-                    <div class="flex items-center space-x-1"><i data-lucide="heart" class="w-5 h-5 fill-white"></i><span>128</span></div>
-                    <div class="flex items-center space-x-1"><i data-lucide="message-circle" class="w-5 h-5 fill-white"></i><span>14</span></div>
+            <div class="portfolio-card glass-3d rounded-2xl overflow-hidden cursor-pointer card-3d-hover group" data-category="jurnal" onclick="openProjectModal('E-JURNAL UNPAM', 'Platform publikasi jurnal ilmiah Teknik Informatika UNPAM. Menyediakan arsip makalah, pengelolaan naskah akademik, dan akses terbuka bagi civitas akademika.', 'http://openjournal.unpam.ac.id/index.php/informatika', 'https://placehold.co/600x600/3b82f6/ffffff?text=E-JURNAL')">
+                <div class="relative aspect-square overflow-hidden bg-slate-100 dark:bg-zinc-900">
+                    <img id="projImg-1" src="https://placehold.co/400x400/3b82f6/ffffff?text=E-JURNAL" alt="E-Jurnal" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/400x400?text=Jurnal'">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center space-x-6 text-white font-bold text-sm">
+                        <div class="flex items-center space-x-1"><i data-lucide="heart" class="w-5 h-5 fill-white text-rose-500"></i><span>128</span></div>
+                        <div class="flex items-center space-x-1"><i data-lucide="message-circle" class="w-5 h-5 fill-white"></i><span>14</span></div>
+                    </div>
+                </div>
+                <div class="p-4 space-y-1">
+                    <span class="text-[10px] uppercase font-bold text-ig-blue tracking-wider">E-Jurnal</span>
+                    <h4 class="font-bold text-sm">E-Jurnal UNPAM Informatika</h4>
                 </div>
             </div>
 
-            <!-- Project 2 -->
-            <div class="portfolio-card relative aspect-square group bg-slate-100 dark:bg-zinc-900 overflow-hidden cursor-pointer" data-category="modul" onclick="openProjectModal('Presentation Module', 'Modul presentasi profesional untuk transfer knowledge manajemen proyek IT, struktur arsitektur sistem, dan manajemen waktu.', '#', 'https://placehold.co/600x600/6366f1/ffffff?text=Presentation+Module')">
-                <img src="https://placehold.co/400x400/6366f1/ffffff?text=Presentation+Module" alt="Presentation Module" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/400x400?text=Module'">
-                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center space-x-6 text-white font-bold text-sm">
-                    <div class="flex items-center space-x-1"><i data-lucide="heart" class="w-5 h-5 fill-white"></i><span>95</span></div>
-                    <div class="flex items-center space-x-1"><i data-lucide="message-circle" class="w-5 h-5 fill-white"></i><span>8</span></div>
+            <div class="portfolio-card glass-3d rounded-2xl overflow-hidden cursor-pointer card-3d-hover group" data-category="modul" onclick="openProjectModal('Presentation Module', 'Modul presentasi profesional untuk transfer knowledge manajemen proyek IT, struktur arsitektur sistem, dan manajemen waktu.', '#', 'https://placehold.co/600x600/6366f1/ffffff?text=Presentation+Module')">
+                <div class="relative aspect-square overflow-hidden bg-slate-100 dark:bg-zinc-900">
+                    <img id="projImg-2" src="https://placehold.co/400x400/6366f1/ffffff?text=Presentation+Module" alt="Presentation Module" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/400x400?text=Module'">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center space-x-6 text-white font-bold text-sm">
+                        <div class="flex items-center space-x-1"><i data-lucide="heart" class="w-5 h-5 fill-white text-rose-500"></i><span>95</span></div>
+                        <div class="flex items-center space-x-1"><i data-lucide="message-circle" class="w-5 h-5 fill-white"></i><span>8</span></div>
+                    </div>
+                </div>
+                <div class="p-4 space-y-1">
+                    <span class="text-[10px] uppercase font-bold text-indigo-500 tracking-wider">Modul IT</span>
+                    <h4 class="font-bold text-sm">Presentation Module & Docs</h4>
                 </div>
             </div>
 
-            <!-- Project 3 -->
-            <div class="portfolio-card relative aspect-square group bg-slate-100 dark:bg-zinc-900 overflow-hidden cursor-pointer" data-category="infra" onclick="openProjectModal('Data Center Infrastructure', 'Simulasi tata kelola jaringan server, penataan perangkat keras, dan standar keamanan fisik serta digital pusat data perusahaan.', '#', 'https://placehold.co/600x600/0ea5e9/ffffff?text=Data+Center')">
-                <img src="https://placehold.co/400x400/0ea5e9/ffffff?text=Data+Center" alt="Data Center" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/400x400?text=DataCenter'">
-                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center space-x-6 text-white font-bold text-sm">
-                    <div class="flex items-center space-x-1"><i data-lucide="heart" class="w-5 h-5 fill-white"></i><span>142</span></div>
-                    <div class="flex items-center space-x-1"><i data-lucide="message-circle" class="w-5 h-5 fill-white"></i><span>19</span></div>
+            <div class="portfolio-card glass-3d rounded-2xl overflow-hidden cursor-pointer card-3d-hover group" data-category="infra" onclick="openProjectModal('Data Center Infrastructure', 'Simulasi tata kelola jaringan server, penataan perangkat keras, dan standar keamanan fisik serta digital pusat data perusahaan.', '#', 'https://placehold.co/600x600/0ea5e9/ffffff?text=Data+Center')">
+                <div class="relative aspect-square overflow-hidden bg-slate-100 dark:bg-zinc-900">
+                    <img id="projImg-3" src="https://placehold.co/400x400/0ea5e9/ffffff?text=Data+Center" alt="Data Center" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/400x400?text=DataCenter'">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center space-x-6 text-white font-bold text-sm">
+                        <div class="flex items-center space-x-1"><i data-lucide="heart" class="w-5 h-5 fill-white text-rose-500"></i><span>142</span></div>
+                        <div class="flex items-center space-x-1"><i data-lucide="message-circle" class="w-5 h-5 fill-white"></i><span>19</span></div>
+                    </div>
+                </div>
+                <div class="p-4 space-y-1">
+                    <span class="text-[10px] uppercase font-bold text-sky-500 tracking-wider">Infra</span>
+                    <h4 class="font-bold text-sm">Data Center Infrastructure</h4>
                 </div>
             </div>
 
-            <!-- Project 4 -->
-            <div class="portfolio-card relative aspect-square group bg-slate-100 dark:bg-zinc-900 overflow-hidden cursor-pointer" data-category="jurnal" onclick="openProjectModal('Web Portfolio & Profile', 'Desain antarmuka profil profesional dengan integrasi kontak langsung WhatsApp, Telegram, dan Email.', '#', 'https://placehold.co/600x600/f59e0b/ffffff?text=Portfolio+IG')">
-                <img src="https://placehold.co/400x400/f59e0b/ffffff?text=Portfolio+IG" alt="Portfolio" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/600x400?text=Portfolio'">
-                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center space-x-6 text-white font-bold text-sm">
-                    <div class="flex items-center space-x-1"><i data-lucide="heart" class="w-5 h-5 fill-white"></i><span>210</span></div>
-                    <div class="flex items-center space-x-1"><i data-lucide="message-circle" class="w-5 h-5 fill-white"></i><span>25</span></div>
+            <div class="portfolio-card glass-3d rounded-2xl overflow-hidden cursor-pointer card-3d-hover group" data-category="jurnal" onclick="openProjectModal('Web Portfolio & Profile', 'Desain antarmuka profil profesional dengan integrasi kontak langsung WhatsApp, Telegram, dan Email.', '#', 'https://placehold.co/600x600/f59e0b/ffffff?text=Portfolio+IG')">
+                <div class="relative aspect-square overflow-hidden bg-slate-100 dark:bg-zinc-900">
+                    <img id="projImg-4" src="https://placehold.co/400x400/f59e0b/ffffff?text=Portfolio+IG" alt="Portfolio" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/400x400?text=Portfolio'">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center space-x-6 text-white font-bold text-sm">
+                        <div class="flex items-center space-x-1"><i data-lucide="heart" class="w-5 h-5 fill-white text-rose-500"></i><span>210</span></div>
+                        <div class="flex items-center space-x-1"><i data-lucide="message-circle" class="w-5 h-5 fill-white"></i><span>25</span></div>
+                    </div>
+                </div>
+                <div class="p-4 space-y-1">
+                    <span class="text-[10px] uppercase font-bold text-amber-500 tracking-wider">E-Jurnal / Web</span>
+                    <h4 class="font-bold text-sm">Instagram Aesthetic Portfolio</h4>
                 </div>
             </div>
 
@@ -225,39 +299,44 @@
 
         <div id="commentsTabContent" class="hidden mt-6 max-w-2xl mx-auto space-y-6">
             
-            <!-- Comment Submission Form -->
-            <div class="bg-white dark:bg-zinc-900 border border-ig-border dark:border-ig-darkborder rounded-2xl p-6 shadow-sm">
+            <div class="glass-3d rounded-3xl p-6 shadow-xl">
                 <h3 class="font-bold text-base mb-4 flex items-center space-x-2">
                     <i data-lucide="message-square-plus" class="w-5 h-5 text-ig-blue"></i>
-                    <span>Tinggalkan Komentar atau Pesan</span>
+                    <span>Tinggalkan Komentar atau Buku Tamu</span>
                 </h3>
                 <form id="commentForm" class="space-y-4" onsubmit="handleCommentSubmit(event)">
                     <div>
                         <label for="commentName" class="block text-xs font-bold uppercase tracking-wider mb-1.5 text-slate-500">Nama Anda</label>
-                        <input type="text" id="commentName" required class="w-full px-4 py-3 rounded-xl border border-ig-border dark:border-ig-darkborder bg-slate-50 dark:bg-black text-sm focus:outline-none focus:ring-2 focus:ring-ig-blue transition-all" placeholder="Contoh: Budi Santoso">
+                        <input type="text" id="commentName" required class="w-full px-4 py-3 rounded-xl border border-ig-border dark:border-ig-darkborder bg-white/50 dark:bg-black/50 text-sm focus:outline-none focus:ring-2 focus:ring-ig-blue transition-all" placeholder="Contoh: Budi Santoso">
                     </div>
                     <div>
                         <label for="commentText" class="block text-xs font-bold uppercase tracking-wider mb-1.5 text-slate-500">Isi Komentar / Pesan</label>
-                        <textarea id="commentText" rows="4" required class="w-full px-4 py-3 rounded-xl border border-ig-border dark:border-ig-darkborder bg-slate-50 dark:bg-black text-sm focus:outline-none focus:ring-2 focus:ring-ig-blue transition-all" placeholder="Tuliskan apresiasi, pertanyaan, atau pesan kolaborasi..."></textarea>
+                        <textarea id="commentText" rows="4" required class="w-full px-4 py-3 rounded-xl border border-ig-border dark:border-ig-darkborder bg-white/50 dark:bg-black/50 text-sm focus:outline-none focus:ring-2 focus:ring-ig-blue transition-all" placeholder="Tuliskan apresiasi, pertanyaan, atau pesan kolaborasi..."></textarea>
                     </div>
-                    <button type="submit" class="w-full py-3 rounded-xl bg-ig-blue hover:bg-ig-hover text-white font-semibold text-sm transition-colors shadow-md shadow-ig-blue/20">
-                        Kirim Komentar
+                    <button type="submit" id="submitCommentBtn" class="w-full py-3.5 rounded-xl bg-ig-blue hover:bg-ig-hover text-white font-bold text-sm transition-colors shadow-md shadow-ig-blue/30 flex items-center justify-center space-x-2">
+                        <i data-lucide="send" class="w-4 h-4"></i>
+                        <span>Kirim Komentar (Realtime)</span>
                     </button>
                 </form>
             </div>
 
-            <!-- Comments List Feed -->
             <div class="space-y-4">
-                <h4 class="font-bold text-sm text-slate-500 uppercase tracking-wider px-2">Komentar Terbaru (<span id="commentCounterHeader">0</span>)</h4>
+                <div class="flex items-center justify-between px-2">
+                    <h4 class="font-bold text-sm text-slate-500 uppercase tracking-wider">Komentar Terbaru (<span id="commentCounterHeader">0</span>)</h4>
+                    <span class="text-xs text-emerald-600 dark:text-emerald-400 font-semibold flex items-center space-x-1">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span>Sinkronisasi Database Aktif</span>
+                    </span>
+                </div>
                 <div id="commentsContainer" class="space-y-3">
-                    <!-- Dynamic comments will be injected here -->
+                    <!-- Dynamic real-time comments injected here -->
                 </div>
             </div>
 
         </div>
     </main>
 
-    <footer class="py-8 border-t border-ig-border dark:border-ig-darkborder text-center text-xs text-slate-500 space-y-3 bg-white dark:bg-black">
+    <footer class="py-8 border-t border-ig-border dark:border-ig-darkborder text-center text-xs text-slate-500 space-y-3 bg-white/50 dark:bg-black/50 backdrop-blur-md">
         <div class="flex justify-center space-x-6">
             <a href="https://wa.me/6281545842290" target="_blank" rel="noopener noreferrer" class="hover:text-ig-blue transition-colors flex items-center space-x-1 font-semibold">
                 <i data-lucide="message-circle" class="w-4 h-4 text-emerald-600"></i>
@@ -272,11 +351,64 @@
                 <span>syafrilmalik11@gmail.com</span>
             </a>
         </div>
-        <p>© 2026 Syafril Malik • Built with Instagram Profile Aesthetic</p>
+        <p>© 2026 Syafril Malik • 3D Instagram Glassmorphism Portfolio & Realtime DB</p>
     </footer>
 
-    <div id="projectModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-        <div class="bg-white dark:bg-zinc-900 border border-ig-border dark:border-ig-darkborder rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl relative animate-in fade-in zoom-in duration-200">
+    <div id="photoManagerModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div class="glass-3d rounded-3xl max-w-md w-full p-6 space-y-6 shadow-2xl relative">
+            <button onclick="closePhotoManagerModal()" class="absolute top-4 right-4 p-2 rounded-full bg-slate-200 dark:bg-zinc-800 hover:bg-slate-300 transition-colors">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div class="space-y-1">
+                <h3 class="text-xl font-extrabold flex items-center space-x-2">
+                    <i data-lucide="image-plus" class="w-5 h-5 text-ig-blue"></i>
+                    <span>Pengelola Foto & Portofolio Instagram</span>
+                </h3>
+                <p class="text-xs text-slate-500">Ubah foto profil melalui URL / Google Drive atau upload file gambar langsung seperti di Instagram!</p>
+            </div>
+            <div class="space-y-5">
+                <!-- Profile Picture Management -->
+                <div class="p-4 rounded-2xl bg-white/50 dark:bg-black/30 border border-ig-border dark:border-ig-darkborder space-y-3">
+                    <h4 class="font-bold text-xs uppercase tracking-wider text-ig-blue">1. Foto Profil (Google Drive / URL / Upload)</h4>
+                    <div>
+                        <label class="block text-[11px] text-slate-500 mb-1">Tautan URL Gambar / Google Drive</label>
+                        <div class="flex gap-2">
+                            <input type="url" id="newProfileUrlInput" placeholder="https://lh3.googleusercontent.com/d/..." class="flex-1 px-3 py-2 rounded-xl border border-ig-border dark:border-ig-darkborder bg-white dark:bg-black text-xs">
+                            <button onclick="updateProfilePhotoFromUrl()" class="px-3 py-2 rounded-xl bg-ig-blue text-white text-xs font-bold">Simpan</button>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-500 mb-1">Atau Upload File Dari Perangkat</label>
+                        <input type="file" id="profileFileUpload" accept="image/*" onchange="handleProfileFileUpload(event)" class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-ig-blue file:text-white hover:file:bg-ig-hover cursor-pointer">
+                    </div>
+                </div>
+
+                <!-- Portfolio Post Photo Upload -->
+                <div class="p-4 rounded-2xl bg-white/50 dark:bg-black/30 border border-ig-border dark:border-ig-darkborder space-y-3">
+                    <h4 class="font-bold text-xs uppercase tracking-wider text-purple-600">2. Foto Portofolio / Postingan</h4>
+                    <div>
+                        <label class="block text-[11px] text-slate-500 mb-1">Pilih Target Postingan</label>
+                        <select id="projectTargetSelect" class="w-full px-3 py-2 rounded-xl border border-ig-border dark:border-ig-darkborder bg-white dark:bg-black text-xs">
+                            <option value="projImg-1">Post 1: E-Jurnal UNPAM</option>
+                            <option value="projImg-2">Post 2: Presentation Module</option>
+                            <option value="projImg-3">Post 3: Data Center Infrastructure</option>
+                            <option value="projImg-4">Post 4: Instagram Aesthetic Portfolio</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-500 mb-1">Upload File Gambar (Gaya Instagram)</label>
+                        <input type="file" id="projectFileUpload" accept="image/*" onchange="handleProjectFileUpload(event)" class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-purple-600 file:text-white hover:file:bg-purple-700 cursor-pointer">
+                    </div>
+                </div>
+            </div>
+            <div class="pt-2 flex justify-end">
+                <button onclick="closePhotoManagerModal()" class="px-5 py-2.5 rounded-xl border border-ig-border dark:border-ig-darkborder text-sm font-semibold hover:bg-slate-100 dark:hover:bg-zinc-800">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="projectModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div class="glass-3d rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl relative animate-in fade-in zoom-in duration-200">
             <div class="relative aspect-video bg-slate-100 dark:bg-black">
                 <img id="modalImg" src="" alt="Project Preview" class="w-full h-full object-cover">
                 <button onclick="closeProjectModal()" class="absolute top-4 right-4 p-2 rounded-full bg-black/60 text-white hover:bg-black transition-colors">
@@ -284,13 +416,13 @@
                 </button>
             </div>
             <div class="p-6 space-y-4">
-                <h3 id="modalTitle" class="text-xl font-bold"></h3>
-                <p id="modalDesc" class="text-sm text-slate-600 dark:text-zinc-400 leading-relaxed"></p>
+                <h3 id="modalTitle" class="text-xl font-extrabold"></h3>
+                <p id="modalDesc" class="text-sm text-slate-600 dark:text-zinc-300 leading-relaxed"></p>
                 <div class="pt-4 flex items-center space-x-3">
-                    <a id="modalLink" href="#" target="_blank" rel="noopener noreferrer" class="flex-1 py-3 rounded-xl bg-ig-blue hover:bg-ig-hover text-white font-semibold text-sm text-center transition-colors">
+                    <a id="modalLink" href="#" target="_blank" rel="noopener noreferrer" class="flex-1 py-3 rounded-xl bg-ig-blue hover:bg-ig-hover text-white font-bold text-sm text-center transition-colors shadow-md shadow-ig-blue/30">
                         Buka Tautan Proyek
                     </a>
-                    <button onclick="closeProjectModal()" class="px-5 py-3 rounded-xl border border-ig-border dark:border-ig-darkborder font-semibold text-sm hover:bg-slate-50 dark:hover:bg-zinc-800 transition-colors">
+                    <button onclick="closeProjectModal()" class="px-5 py-3 rounded-xl border border-ig-border dark:border-ig-darkborder font-bold text-sm hover:bg-slate-50 dark:hover:bg-zinc-800 transition-colors">
                         Tutup
                     </button>
                 </div>
@@ -299,25 +431,25 @@
     </div>
 
     <div id="storyModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/90 backdrop-blur-md">
-        <div class="bg-zinc-900 border border-zinc-800 rounded-3xl max-w-sm w-full p-6 text-white text-center space-y-6 relative shadow-2xl">
-            <button onclick="closeStoryModal()" class="absolute top-4 right-4 p-2 rounded-full bg-zinc-800 hover:bg-zinc-700 transition-colors">
+        <div class="glass-3d rounded-3xl max-w-sm w-full p-6 text-center space-y-6 relative shadow-2xl">
+            <button onclick="closeStoryModal()" class="absolute top-4 right-4 p-2 rounded-full bg-slate-200 dark:bg-zinc-800 hover:bg-slate-300 transition-colors">
                 <i data-lucide="x" class="w-5 h-5"></i>
             </button>
             <div class="w-24 h-24 rounded-full mx-auto p-[3px] story-ring">
-                <img src="https://placehold.co/300x300/0095f6/ffffff?text=Syafril" alt="Syafril" class="w-full h-full object-cover rounded-full">
+                <img id="storyModalImg" src="https://lh3.googleusercontent.com/d/1X3UUiHZFCF_82G43u9sGYjzpsk2zmc_C=s1000" alt="Syafril" class="w-full h-full object-cover rounded-full">
             </div>
             <div class="space-y-2">
-                <h3 class="font-bold text-lg">Syafril Malik's Story</h3>
-                <p class="text-xs text-zinc-400 leading-relaxed">
+                <h3 class="font-extrabold text-lg">Syafril Malik's Story</h3>
+                <p class="text-xs text-slate-600 dark:text-zinc-300 leading-relaxed">
                     "Always ready to deliver clean solutions, robust network architectures, and impactful digital experiences."
                 </p>
             </div>
             <div class="pt-2 flex flex-col space-y-2">
-                <a href="https://wa.me/6281545842290" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs transition-colors flex items-center justify-center space-x-2">
+                <a href="https://wa.me/6281545842290" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition-colors flex items-center justify-center space-x-2">
                     <i data-lucide="message-circle" class="w-4 h-4"></i>
                     <span>Chat WhatsApp (081545842290)</span>
                 </a>
-                <a href="mailto:syafrilmalik11@gmail.com" class="w-full py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-semibold text-xs transition-colors flex items-center justify-center space-x-2">
+                <a href="mailto:syafrilmalik11@gmail.com" class="w-full py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs transition-colors flex items-center justify-center space-x-2">
                     <i data-lucide="mail" class="w-4 h-4"></i>
                     <span>Kirim Email</span>
                 </a>
@@ -325,30 +457,58 @@
         </div>
     </div>
 
-    <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, onSnapshot, query } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // Theme Toggle Handler
-        const themeToggle = document.getElementById('themeToggle');
-        const htmlElement = document.documentElement;
+        // Globals provided by environment
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'syafril-portfolio-app';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
+            apiKey: "AIzaSyDummyKeyForPreviewModeOnly12345",
+            authDomain: "portfolio-app.firebaseapp.com",
+            projectId: "portfolio-app",
+            storageBucket: "portfolio-app.appspot.com",
+            messagingSenderId: "123456789",
+            appId: appId
+        };
 
-        themeToggle.addEventListener('click', () => {
-            if (htmlElement.classList.contains('dark')) {
-                htmlElement.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
-            } else {
-                htmlElement.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
+        let db, auth, userId = 'guest-' + Math.random().toString(36).substring(2, 9);
+
+        async function initFirebase() {
+            try {
+                const app = initializeApp(firebaseConfig);
+                auth = getAuth(app);
+                db = getFirestore(app);
+
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    await signInWithCustomToken(auth, __initial_auth_token);
+                } else {
+                    await signInAnonymously(auth);
+                }
+                if (auth.currentUser) {
+                    userId = auth.currentUser.uid;
+                }
+                setupRealtimeComments();
+            } catch (err) {
+                console.warn("Firebase initialization running in local fallback mode:", err);
+                setupFallbackComments();
             }
-        });
-
-        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            htmlElement.classList.add('dark');
         }
 
-        // Tab Switching Logic
-        function switchTab(tab) {
+        // Expose functions globally to prevent ReferenceError in onclick attributes
+        window.closeFrierenModal = function() {
+            const modal = document.getElementById('welcomeFrierenModal');
+            if (modal) {
+                modal.style.opacity = '0';
+                modal.style.transition = 'opacity 0.4s ease';
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                }, 400);
+            }
+        };
+
+        window.switchTab = function(tab) {
             const postsTab = document.getElementById('postsTabContent');
             const commentsTab = document.getElementById('commentsTabContent');
             const postsBtn = document.getElementById('tabPostsBtn');
@@ -369,10 +529,9 @@
                 postsBtn.classList.remove('border-slate-900', 'dark:border-white', 'text-slate-900', 'dark:text-white');
                 postsBtn.classList.add('border-transparent', 'text-slate-400');
             }
-        }
+        };
 
-        // Portfolio Category Filter
-        function filterPortfolio(category) {
+        window.filterPortfolio = function(category) {
             const cards = document.querySelectorAll('.portfolio-card');
             cards.forEach(card => {
                 if (category === 'all' || card.getAttribute('data-category') === category) {
@@ -381,63 +540,136 @@
                     card.style.display = 'none';
                 }
             });
+        };
+
+        window.openPhotoManagerModal = function() {
+            const modal = document.getElementById('photoManagerModal');
+            if (modal) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            }
+        };
+
+        window.closePhotoManagerModal = function() {
+            const modal = document.getElementById('photoManagerModal');
+            if (modal) {
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
+            }
+        };
+
+        function formatDriveUrl(url) {
+            if (url.includes('drive.google.com')) {
+                const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
+                if (match && match[1]) {
+                    return `https://lh3.googleusercontent.com/d/${match[1]}=s1000`;
+                }
+            }
+            return url;
         }
 
-        // Project Modal Handlers
-        function openProjectModal(title, desc, link, imgSrc) {
+        window.updateProfilePhotoFromUrl = function() {
+            const input = document.getElementById('newProfileUrlInput');
+            if (!input) return;
+            let url = input.value.trim();
+            if (!url) return;
+            url = formatDriveUrl(url);
+            document.getElementById('profileImageDisplay').src = url;
+            document.getElementById('storyModalImg').src = url;
+            input.value = '';
+            window.closePhotoManagerModal();
+        };
+
+        window.handleProfileFileUpload = function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const base64Url = event.target.result;
+                document.getElementById('profileImageDisplay').src = base64Url;
+                document.getElementById('storyModalImg').src = base64Url;
+                window.closePhotoManagerModal();
+            };
+            reader.readAsDataURL(file);
+        };
+
+        window.handleProjectFileUpload = function(e) {
+            const file = e.target.files[0];
+            const targetSelect = document.getElementById('projectTargetSelect');
+            if (!file || !targetSelect) return;
+            const targetId = targetSelect.value;
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const base64Url = event.target.result;
+                const imgEl = document.getElementById(targetId);
+                if (imgEl) imgEl.src = base64Url;
+                window.closePhotoManagerModal();
+            };
+            reader.readAsDataURL(file);
+        };
+
+        window.openProjectModal = function(title, desc, link, imgSrc) {
             document.getElementById('modalTitle').innerText = title;
             document.getElementById('modalDesc').innerText = desc;
             document.getElementById('modalLink').href = link;
             document.getElementById('modalImg').src = imgSrc;
             const modal = document.getElementById('projectModal');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        }
+            if (modal) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            }
+        };
 
-        function closeProjectModal() {
+        window.closeProjectModal = function() {
             const modal = document.getElementById('projectModal');
-            modal.classList.remove('flex');
-            modal.classList.add('hidden');
-        }
+            if (modal) {
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
+            }
+        };
 
-        // Story Modal Handlers
-        function showStoryModal() {
+        window.showStoryModal = function() {
             const modal = document.getElementById('storyModal');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        }
+            if (modal) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            }
+        };
 
-        function closeStoryModal() {
+        window.closeStoryModal = function() {
             const modal = document.getElementById('storyModal');
-            modal.classList.remove('flex');
-            modal.classList.add('hidden');
-        }
+            if (modal) {
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
+            }
+        };
 
-        // Comments System in Memory
-        let commentsList = [
-            { name: "Andi Pratama", text: "Keren sekali profilnya Kak Syafril! Sangat rapi mirip IG.", date: "Baru saja" },
-            { name: "Siti Rahma", text: "Halo Kak, sukses terus untuk proyek IT nya!", date: "2 jam yang lalu" }
+        // Realtime Comments Database Setup
+        let localComments = [
+            { name: "Andi Pratama", text: "Keren sekali profil Kak Syafril dengan tema 3D glassmorphic dan Frieren!", date: "7 Agustus 2026, 10:30 WIB" }
         ];
 
-        function renderComments() {
+        function renderComments(list) {
             const container = document.getElementById('commentsContainer');
-            document.getElementById('commentCountDisplay').innerText = commentsList.length;
-            document.getElementById('commentCounterHeader').innerText = commentsList.length;
+            if (!container) return;
+            document.getElementById('commentCountDisplay').innerText = list.length;
+            document.getElementById('tabCommentCount').innerText = list.length;
+            document.getElementById('commentCounterHeader').innerText = list.length;
 
-            if (commentsList.length === 0) {
+            if (list.length === 0) {
                 container.innerHTML = '<p class="text-center text-xs text-slate-400 py-6">Belum ada komentar. Jadilah yang pertama berkomentar!</p>';
                 return;
             }
 
-            container.innerHTML = commentsList.map(c => `
-                <div class="bg-white dark:bg-zinc-900 border border-ig-border dark:border-ig-darkborder rounded-xl p-4 flex space-x-3 items-start shadow-xs">
-                    <div class="w-9 h-9 rounded-full bg-ig-blue text-white font-bold flex items-center justify-center text-xs flex-shrink-0">
-                        ${c.name.charAt(0).toUpperCase()}
+            container.innerHTML = list.map(c => `
+                <div class="glass-3d rounded-2xl p-4 flex space-x-3 items-start shadow-sm">
+                    <div class="w-9 h-9 rounded-full bg-ig-blue text-white font-bold flex items-center justify-center text-xs flex-shrink-0 shadow">
+                        ${escapeHtml(c.name.charAt(0).toUpperCase())}
                     </div>
                     <div class="flex-grow">
                         <div class="flex items-center justify-between mb-1">
                             <span class="font-bold text-sm">${escapeHtml(c.name)}</span>
-                            <span class="text-[10px] text-slate-400">${c.date}</span>
+                            <span class="text-[10px] text-slate-400 font-medium">${c.date || 'Baru saja'}</span>
                         </div>
                         <p class="text-sm text-slate-700 dark:text-zinc-300 leading-relaxed">${escapeHtml(c.text)}</p>
                     </div>
@@ -445,27 +677,77 @@
             `).join('');
         }
 
-        function handleCommentSubmit(e) {
+        function setupRealtimeComments() {
+            try {
+                const commentsColl = collection(db, 'artifacts', appId, 'public', 'data', 'guestbook_comments');
+                onSnapshot(query(commentsColl), (snapshot) => {
+                    const fetched = [];
+                    snapshot.forEach(docSnap => {
+                        fetched.push(docSnap.data());
+                    });
+                    if (fetched.length > 0) {
+                        fetched.sort((a, b) => (b.rawTime || 0) - (a.rawTime || 0));
+                        renderComments(fetched);
+                    } else {
+                        renderComments(localComments);
+                    }
+                }, (error) => {
+                    console.warn("Realtime listener warning:", error);
+                    renderComments(localComments);
+                });
+            } catch (err) {
+                console.warn("Firebase setup warning:", err);
+                renderComments(localComments);
+            }
+        }
+
+        function setupFallbackComments() {
+            renderComments(localComments);
+        }
+
+        window.handleCommentSubmit = async function(e) {
             e.preventDefault();
             const nameInput = document.getElementById('commentName');
             const textInput = document.getElementById('commentText');
 
+            const now = new Date();
+            const formattedDate = now.toLocaleString('id-ID', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+
             const newComment = {
                 name: nameInput.value.trim(),
                 text: textInput.value.trim(),
-                date: "Baru saja"
+                date: formattedDate + ' WIB',
+                rawTime: now.getTime()
             };
 
-            commentsList.unshift(newComment);
-            renderComments();
             nameInput.value = '';
             textInput.value = '';
 
-            // Switch back to comments tab to see it
-            switchTab('comments');
-        }
+            try {
+                if (db && auth && auth.currentUser) {
+                    const commentsColl = collection(db, 'artifacts', appId, 'public', 'data', 'guestbook_comments');
+                    await addDoc(commentsColl, newComment);
+                } else {
+                    localComments.unshift(newComment);
+                    renderComments(localComments);
+                }
+            } catch (err) {
+                console.warn("Error saving to database, storing locally:", err);
+                localComments.unshift(newComment);
+                renderComments(localComments);
+            }
+
+            window.switchTab('comments');
+        };
 
         function escapeHtml(text) {
+            if (!text) return '';
             const map = {
                 '&': '&amp;',
                 '<': '&lt;',
@@ -476,8 +758,32 @@
             return text.replace(/[&<>"']/g, function(m) { return map[m]; });
         }
 
-        // Initial render
-        renderComments();
+        window.addEventListener('DOMContentLoaded', () => {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+            initFirebase();
+
+            // Theme Toggle Handler
+            const themeToggle = document.getElementById('themeToggle');
+            const htmlElement = document.documentElement;
+
+            if (themeToggle) {
+                themeToggle.addEventListener('click', () => {
+                    if (htmlElement.classList.contains('dark')) {
+                        htmlElement.classList.remove('dark');
+                        localStorage.setItem('theme', 'light');
+                    } else {
+                        htmlElement.classList.add('dark');
+                        localStorage.setItem('theme', 'dark');
+                    }
+                });
+            }
+
+            if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                htmlElement.classList.add('dark');
+            }
+        });
     </script>
 </body>
 </html>
