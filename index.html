@@ -68,7 +68,7 @@
         <div class="max-w-4xl mx-auto px-4 h-14 flex items-center justify-between">
             <a href="#profile" class="flex items-center space-x-2 font-bold text-lg tracking-tight">
                 <span class="font-cyber font-extrabold text-xl bg-gradient-to-r from-cyber-blue to-cyber-purple bg-clip-text text-transparent">syafrilmalikkk</span>
-                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-cyber-blue/20 text-cyber-blue border border-cyber-blue/40 font-cyber">v2.8</span>
+                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-cyber-blue/20 text-cyber-blue border border-cyber-blue/40 font-cyber">v3.0 AI</span>
             </a>
 
             <div class="flex items-center space-x-2">
@@ -80,15 +80,6 @@
                     <i data-lucide="lock" class="w-4 h-4 text-amber-400"></i>
                     <span class="hidden sm:inline font-cyber">Ubah Foto</span>
                 </button>
-                <a href="https://wa.me/6281545842290?text=Halo%20Syafril%2C%20saya%20tertarik%20dengan%20portofolio%20Anda." target="_blank" rel="noopener noreferrer" class="p-2 rounded-full bg-emerald-950/40 border border-emerald-500/30 hover:bg-emerald-900/50 text-emerald-400 transition-colors shadow-md shadow-emerald-500/20" title="WhatsApp: 081545842290">
-                    <i data-lucide="message-circle" class="w-5 h-5"></i>
-                </a>
-                <a href="https://t.me/syafrilmalik" target="_blank" rel="noopener noreferrer" class="p-2 rounded-full bg-sky-950/40 border border-sky-500/30 hover:bg-sky-900/50 text-sky-400 transition-colors shadow-md shadow-sky-500/20" title="Telegram: @syafrilmalik">
-                    <i data-lucide="send" class="w-5 h-5"></i>
-                </a>
-                <a href="https://instagram.com/syafrilmalikkk" target="_blank" rel="noopener noreferrer" class="p-2 rounded-full bg-pink-950/40 border border-pink-500/30 hover:bg-pink-900/50 text-pink-400 transition-colors shadow-md shadow-pink-500/20" title="Instagram: @syafrilmalikkk">
-                    <i data-lucide="instagram" class="w-5 h-5"></i>
-                </a>
             </div>
         </div>
     </header>
@@ -121,10 +112,6 @@
                                     <i data-lucide="send" class="w-3.5 h-3.5"></i>
                                     <span>Telegram</span>
                                 </a>
-                                <a href="https://instagram.com/syafrilmalikkk" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-xl bg-gradient-to-r from-purple-600 via-pink-600 to-amber-500 hover:opacity-90 text-white text-xs font-bold transition-colors text-center font-cyber flex items-center space-x-1.5">
-                                    <i data-lucide="instagram" class="w-3.5 h-3.5"></i>
-                                    <span>Instagram</span>
-                                </a>
                             </div>
                         </div>
 
@@ -151,13 +138,36 @@
                 </div>
             </div>
         </section>
+
+        <section class="mt-8">
+            <div class="glass-cyber rounded-3xl p-6 cyber-border bg-gradient-to-r from-cyber-card via-black to-cyber-card relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div class="space-y-2 text-left">
+                        <div class="inline-flex items-center space-x-2 px-2.5 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-300 text-xs font-cyber">
+                            <i data-lucide="user-check" class="w-3.5 h-3.5"></i>
+                            <span>AI Visitor Personality Insights</span>
+                        </div>
+                        <h2 class="text-lg font-bold font-cyber text-white">Cek Kepribadian & Gaya Kerja Profesional Anda</h2>
+                        <p class="text-xs text-slate-300 max-w-xl">
+                            Ingin tahu tipe kepribadian dan gaya kerja Anda di dunia profesional? Pilih opsi di bawah untuk dianalisis!
+                        </p>
+                    </div>
+                    <button onclick="openPersonalityModal()" class="px-5 py-3 rounded-xl bg-gradient-to-r from-cyber-purple to-cyber-pink text-white font-extrabold text-xs font-cyber uppercase tracking-wider hover:opacity-90 transition-all shadow-lg shadow-purple-500/30 flex items-center space-x-2 whitespace-nowrap">
+                        <i data-lucide="sparkles" class="w-4 h-4"></i>
+                        <span>Cek Kepribadian Saya</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
         <section class="mt-8">
             <div class="flex items-center justify-between mb-6">
                 <div class="flex items-center space-x-2 font-cyber text-sm tracking-widest text-cyber-blue">
                     <i data-lucide="grid" class="w-4 h-4"></i>
                     <span>PROYEK & PORTOFOLIO (5)</span>
                 </div>
-                <div class="text-xs text-slate-400 font-cyber">Instagram Feed Mode</div>
+                <div class="text-xs text-slate-400 font-cyber">Klik untuk Analisis AI</div>
             </div>
 
             <div id="portfolioGrid" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4">
@@ -246,7 +256,6 @@
 
             <!-- Comments List -->
             <div id="commentsContainer" class="space-y-3 max-h-96 overflow-y-auto pr-1">
-                <!-- Loaded dynamically from database -->
                 <div class="p-4 rounded-xl bg-black/40 border border-cyber-blue/20 animate-pulse text-xs text-slate-400">
                     Memuat komentar realtime dari database...
                 </div>
@@ -264,16 +273,12 @@
                 <i data-lucide="send" class="w-4 h-4"></i>
                 <span>Telegram: @syafrilmalik</span>
             </a>
-            <a href="https://instagram.com/syafrilmalikkk" target="_blank" rel="noopener noreferrer" class="hover:text-cyber-blue transition-colors flex items-center space-x-1.5 font-semibold font-cyber bg-pink-950/40 px-3 py-1.5 rounded-xl border border-pink-500/30 text-pink-400">
-                <i data-lucide="instagram" class="w-4 h-4"></i>
-                <span>Instagram: @syafrilmalikkk</span>
-            </a>
             <a href="mailto:syafrilmalik11@gmail.com" class="hover:text-cyber-blue transition-colors flex items-center space-x-1.5 font-semibold font-cyber bg-rose-950/40 px-3 py-1.5 rounded-xl border border-rose-500/30 text-rose-400">
                 <i data-lucide="mail" class="w-4 h-4"></i>
                 <span>Email: syafrilmalik11@gmail.com</span>
             </a>
         </div>
-        <p class="font-sans">© 2026 Syafril Malik • Portfolio</p>
+        <p class="font-sans">© 2026 Syafril Malik • Portfolio </p>
     </footer>
 
     <!-- Story Modal -->
@@ -300,10 +305,6 @@
                     <i data-lucide="send" class="w-4 h-4"></i>
                     <span>Telegram: @syafrilmalik</span>
                 </a>
-                <a href="https://instagram.com/syafrilmalikkk" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-purple-600 via-pink-600 to-amber-500 hover:opacity-90 text-white font-bold text-xs transition-colors flex items-center justify-center space-x-2 font-cyber uppercase shadow-md shadow-pink-600/30">
-                    <i data-lucide="instagram" class="w-4 h-4"></i>
-                    <span>Instagram: @syafrilmalikkk</span>
-                </a>
                 <a href="mailto:syafrilmalik11@gmail.com" class="w-full py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs transition-colors flex items-center justify-center space-x-2 font-cyber uppercase shadow-md shadow-rose-600/30">
                     <i data-lucide="mail" class="w-4 h-4"></i>
                     <span>Email: syafrilmalik11@gmail.com</span>
@@ -320,9 +321,74 @@
             </button>
             <h3 id="modalTitle" class="font-cyber font-bold text-lg text-cyber-blue">Project Title</h3>
             <p id="modalDesc" class="text-xs text-slate-300 leading-relaxed whitespace-pre-line"></p>
-            <div class="pt-4 flex gap-3">
+            
+            <div class="p-3 rounded-xl bg-cyber-blue/10 border border-cyber-blue/30 space-y-2">
+                <div class="flex items-center justify-between">
+                    <span class="text-[10px] font-cyber text-cyber-blue font-bold flex items-center space-x-1">
+                        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                        <span>AI Analisis & Insight Proyek</span>
+                    </span>
+                    <button onclick="generateProjectAiInsight()" class="px-2.5 py-1 rounded bg-cyber-blue text-black font-bold text-[10px] font-cyber hover:opacity-90">Analisis Sekarang</button>
+                </div>
+                <div id="projectAiInsightContent" class="text-xs text-slate-300">
+                    Klik tombol di atas untuk meminta menganalisis nilai strategis proyek ini.
+                </div>
+            </div>
+
+            <div class="pt-2 flex gap-3">
                 <a href="https://wa.me/6281545842290?text=Halo%20Syafril%2C%20saya%20tertarik%20dengan%20profil%20Anda." target="_blank" rel="noopener noreferrer" class="flex-1 py-2 rounded-xl bg-cyber-blue text-black font-bold text-xs font-cyber uppercase text-center hover:opacity-90">Diskusikan / Hubungi</a>
                 <button onclick="closeProjectModal()" class="px-4 py-2 rounded-xl bg-zinc-800 text-slate-300 font-bold text-xs">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="personalityModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/90 backdrop-blur-md">
+        <div class="glass-cyber rounded-3xl max-w-xl w-full p-6 space-y-4 relative cyber-border max-h-[90vh] overflow-y-auto">
+            <button onclick="closePersonalityModal()" class="absolute top-4 right-4 p-2 rounded-full bg-zinc-800 hover:bg-zinc-700 text-cyber-purple transition-colors">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div class="flex items-center space-x-2 text-cyber-purple font-cyber text-sm font-bold">
+                <i data-lucide="sparkles" class="w-5 h-5"></i>
+                <span>AI Analisis Kepribadian & Work Style Anda</span>
+            </div>
+            <p class="text-xs text-slate-300">
+                Jawab 3 pertanyaan singkat di bawah ini untuk melihat bagaimana mendeskripsikan profil kepribadian dan karakter profesional Anda.
+            </p>
+            <div class="space-y-3">
+                <div>
+                    <label class="block text-xs font-cyber text-slate-300 mb-1">1. Bagaimana pendekatan utama Anda saat menghadapi masalah/kendala berat di pekerjaan?</label>
+                    <select id="pQ1" class="w-full bg-black/60 border border-cyber-purple/30 rounded-xl px-3 py-2 text-xs outline-none text-white font-sans">
+                        <option value="Menganalisis akar masalah secara sistematis berdasarkan data dan fakta yang ada">Menganalisis akar masalah secara sistematis berdasarkan data</option>
+                        <option value="Tetap tenang di bawah tekanan, cepat tanggap mencari solusi praktis">Tetap tenang di bawah tekanan, cepat tanggap mencari solusi praktis</option>
+                        <option value="Berdiskusi dan berkolaborasi bersama tim untuk merumuskan strategi bersama">Berdiskusi dan berkolaborasi bersama tim secara terbuka</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-cyber text-slate-300 mb-1">2. Gaya komunikasi seperti apa yang paling mencerminkan diri Anda di lingkungan kerja?</label>
+                    <select id="pQ2" class="w-full bg-black/60 border border-cyber-purple/30 rounded-xl px-3 py-2 text-xs outline-none text-white font-sans">
+                        <option value="Profesional, jelas, tegas, dan berorientasi pada pencapaian target">Profesional, jelas, tegas, dan berorientasi pada target</option>
+                        <option value="Ramah, kooperatif, dan suportif terhadap rekan satu tim">Ramah, kooperatif, dan suportif terhadap rekan tim</option>
+                        <option value="Terstruktur, detail, dan sangat menghargai ketepatan dokumentasi">Terstruktur, detail, dan menghargai dokumentasi yang rapi</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-cyber text-slate-300 mb-1">3. Nilai atau prinsip etos kerja terkuat yang Anda pegang teguh:</label>
+                    <select id="pQ3" class="w-full bg-black/60 border border-cyber-purple/30 rounded-xl px-3 py-2 text-xs outline-none text-white font-sans">
+                        <option value="Integritas tinggi, tanggung jawab penuh atas tugas yang diemban">Integritas tinggi & tanggung jawab penuh atas tugas</option>
+                        <option value="Haus akan pembelajaran hal baru, adaptif, dan terus berkembang">Haus pembelajaran hal baru, adaptif, & terus berkembang</option>
+                        <option value="Disiplin, konsistensi, dan ketepatan waktu dalam eksekusi proyek">Disiplin, konsistensi, & ketepatan waktu dalam eksekusi</option>
+                    </select>
+                </div>
+                <button onclick="runPersonalityAnalysis()" id="personalityBtn" class="w-full py-3 rounded-xl bg-gradient-to-r from-cyber-purple to-cyber-pink text-white font-extrabold text-xs font-cyber uppercase tracking-wider hover:opacity-90 shadow-lg shadow-purple-500/20">
+                    Analisis Kepribadian Saya
+                </button>
+            </div>
+            <div id="personalityResultArea" class="hidden p-4 rounded-xl bg-black/70 border border-cyber-purple/40 space-y-2 text-xs text-slate-200">
+                <div class="font-bold text-cyber-purple font-cyber flex items-center justify-between">
+                    <span>Hasil Analisis Kepribadian & Work Style Anda</span>
+                    <span class="px-2 py-0.5 rounded bg-cyber-purple/20 text-purple-300 border border-purple-400/30">AI Insights</span>
+                </div>
+                <div id="personalityResultText" class="leading-relaxed whitespace-pre-line text-slate-300"></div>
             </div>
         </div>
     </div>
@@ -341,7 +407,7 @@
                 </div>
                 <div>
                     <h3 class="font-cyber font-bold text-base text-white">Autorisasi PIN Diperlukan</h3>
-                    <p class="text-xs text-slate-400 mt-1"> (Masukkan PIN) untuk mengubah foto profil atau portofolio.</p>
+                    <p class="text-xs text-slate-400 mt-1">Masukkan PIN untuk mengubah foto profil atau portofolio.</p>
                 </div>
                 <div class="space-y-3">
                     <input type="password" id="pinInput" placeholder="Masukkan PIN..." maxlength="6" class="w-full bg-black/60 border border-cyber-blue/30 text-center tracking-widest text-lg py-2.5 rounded-xl focus:border-cyber-blue outline-none font-cyber">
@@ -350,7 +416,7 @@
                 </div>
             </div>
 
-            <!-- Editor Step (Hidden until PIN correct) -->
+            <!-- Editor Step -->
             <div id="editorStep" class="space-y-4 hidden">
                 <div class="flex items-center space-x-2 text-emerald-400 font-cyber text-xs">
                     <i data-lucide="check-circle" class="w-4 h-4"></i>
@@ -391,7 +457,7 @@
                     <div class="w-3 h-3 rounded-full bg-cyber-blue animate-ping"></div>
                     <div>
                         <h3 class="font-cyber font-bold text-sm text-cyber-blue">Syafril AI Assistant</h3>
-                        <p class="text-[10px] text-slate-400">Riwayat tersimpan di database cloud publik</p>
+                        <p class="text-[10px] text-slate-400"></p>
                     </div>
                 </div>
                 <button onclick="closeAiChatModal()" class="p-1.5 rounded-full bg-zinc-800 hover:bg-zinc-700 text-cyber-blue">
@@ -402,7 +468,7 @@
             <!-- Chat Messages Area -->
             <div id="aiChatMessages" class="flex-grow overflow-y-auto space-y-3 pr-2 text-xs">
                 <div class="p-3 rounded-xl bg-cyber-blue/10 border border-cyber-blue/30 text-slate-200">
-                    Halo! Saya adalah Asisten AI Syafril Malik. Riwayat percakapan di sini tersimpan otomatis dan dapat dilihat oleh pengunjung lain!
+                    Halo! Saya adalah Asisten AI Syafril Malik. Tanyakan apa saja tentang portofolio, keahlian IT Support, atau pengalaman proyek Syafril!
                 </div>
             </div>
 
@@ -421,7 +487,7 @@
         import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, addDoc, onSnapshot, query } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'syafril-portfolio-app-v2';
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'syafril-portfolio-app-v3';
         const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
         
         let db, auth;
@@ -441,10 +507,10 @@
             };
             initAuth();
         } catch(e) {
-            console.warn("Firebase offline mode or unconfigured:", e);
+            console.warn("Firebase offline mode:", e);
             document.getElementById('commentsContainer').innerHTML = `
                 <div class="p-3 rounded-xl bg-zinc-900 border border-zinc-700 text-xs text-slate-300">
-                    <strong>Mode Offline / Database Lokal:</strong> Menggunakan penyimpanan sementara browser.
+                    <strong>Mode Offline / Lokal:</strong> Komentar disimpan di memori sementara.
                 </div>
             `;
         }
@@ -452,11 +518,9 @@
         function loadCommentsRealtime() {
             if (!db) return;
             try {
-                // Rule 1: Using strict path for public shared data
                 const commentsRef = collection(db, 'artifacts', appId, 'public', 'data', 'guestbook_comments');
                 const q = query(commentsRef);
                 
-                // Rule 3: onSnapshot with error callback for robust error handling
                 onSnapshot(q, (snapshot) => {
                     const container = document.getElementById('commentsContainer');
                     container.innerHTML = '';
@@ -467,7 +531,6 @@
                         comments.push({ id: doc.id, ...doc.data() });
                     });
 
-                    // Sort newest first in memory (Rule 2: Avoid complex query sorting without indexes)
                     comments.sort((a, b) => new Date(b.timestamp || 0) - new Date(a.timestamp || 0));
 
                     if (comments.length === 0) {
@@ -492,11 +555,6 @@
                     document.getElementById('commentCountDisplay').innerText = count;
                 }, (error) => {
                     console.error("Error loading comments:", error);
-                    document.getElementById('commentsContainer').innerHTML = `
-                        <div class="p-3 rounded-xl bg-rose-950/40 border border-rose-500/30 text-xs text-rose-300">
-                            Gagal memuat database realtime. Pastikan koneksi stabil.
-                        </div>
-                    `;
                 });
             } catch(err) {
                 console.error("Firestore sync error:", err);
@@ -506,15 +564,16 @@
         function loadAiChatRealtime() {
             if (!db) return;
             try {
-                // Rule 1: Using strict path for public shared AI chat history
                 const chatRef = collection(db, 'artifacts', appId, 'public', 'data', 'ai_chat_history');
                 const q = query(chatRef);
                 
                 onSnapshot(q, (snapshot) => {
                     const container = document.getElementById('aiChatMessages');
+                    if (!container) return;
+                    
                     container.innerHTML = `
                         <div class="p-3 rounded-xl bg-cyber-blue/10 border border-cyber-blue/30 text-slate-200">
-                            Halo! Saya adalah Asisten AI Syafril Malik. Riwayat percakapan di sini tersimpan otomatis dan dapat dilihat oleh pengunjung lain!
+                            Halo! Saya adalah Asisten AI Syafril Malik. Tanyakan apa saja tentang portofolio atau keahlian IT Support Syafril!
                         </div>
                     `;
                     
@@ -523,11 +582,9 @@
                         chats.push({ id: doc.id, ...doc.data() });
                     });
 
-                    // Sort oldest first in memory so conversation flows chronologically
                     chats.sort((a, b) => new Date(a.timestamp || 0) - new Date(b.timestamp || 0));
 
                     chats.forEach((chat) => {
-                        // User message
                         const userDiv = document.createElement('div');
                         userDiv.className = 'p-3 rounded-xl bg-black/60 border border-cyber-purple/30 text-slate-200 ml-6 text-right space-y-1';
                         userDiv.innerHTML = `
@@ -536,7 +593,6 @@
                         `;
                         container.appendChild(userDiv);
 
-                        // AI response
                         const aiDiv = document.createElement('div');
                         aiDiv.className = 'p-3 rounded-xl bg-cyber-blue/10 border border-cyber-blue/30 text-slate-200 mr-6 space-y-1';
                         aiDiv.innerHTML = `
@@ -547,7 +603,7 @@
                     });
                     container.scrollTop = container.scrollHeight;
                 }, (error) => {
-                    console.error("Error loading AI chat history:", error);
+                    console.error("Error loading AI chat:", error);
                 });
             } catch(err) {
                 console.error("Firestore AI chat sync error:", err);
@@ -576,16 +632,13 @@
 
             if (db) {
                 try {
-                    // Rule 1: Strict path for public data storage
                     const commentsRef = collection(db, 'artifacts', appId, 'public', 'data', 'guestbook_comments');
                     await addDoc(commentsRef, commentData);
                     document.getElementById('commentForm').reset();
                 } catch(err) {
-                    console.error("Error adding comment to database:", err);
-                    showCustomModal("Gagal menyimpan ke database cloud. Periksa koneksi internet Anda.");
+                    console.error("Error adding comment:", err);
                 }
             } else {
-                // Fallback in-memory/local append if database is uninitialized
                 const container = document.getElementById('commentsContainer');
                 const div = document.createElement('div');
                 div.className = 'p-3.5 rounded-xl bg-black/50 border border-cyber-blue/20 space-y-1.5';
@@ -604,15 +657,12 @@
         function escapeHtml(str) {
             return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
         }
-        
-        function showCustomModal(msg) {
-            alert(msg);
-        }
     </script>
 
     <script>
-        // Lucide Icons initialization
         lucide.createIcons();
+
+        let currentSelectedProject = { title: '', desc: '' };
 
         // Story Modal Functions
         function showStoryModal() {
@@ -626,8 +676,10 @@
 
         // Project Modal Functions
         function openProjectModal(title, desc, category, imgUrl) {
+            currentSelectedProject = { title, desc };
             document.getElementById('modalTitle').innerText = title;
             document.getElementById('modalDesc').innerText = desc;
+            document.getElementById('projectAiInsightContent').innerText = 'Klik tombol di atas untuk meminta menganalisis nilai strategis proyek ini.';
             document.getElementById('projectModal').classList.remove('hidden');
             document.getElementById('projectModal').classList.add('flex');
         }
@@ -636,7 +688,108 @@
             document.getElementById('projectModal').classList.remove('flex');
         }
 
-        // Photo Manager Modal & PIN Functions
+        // Gemini API Feature 2: Project AI Insight Analyzer
+        async function generateProjectAiInsight() {
+            const insightBox = document.getElementById('projectAiInsightContent');
+            insightBox.innerHTML = '<span class="text-cyan-400 animate-pulse">sedang menganalisis nilai strategis proyek...</span>';
+
+            try {
+                const systemPrompt = "Anda adalah konsultan IT senior dan ahli rekrutmen. Berikan analisis singkat (1-2 paragraf padat) mengenai nilai strategis dan keunggulan teknis dari proyek IT Syafril Malik ini dalam bahasa Indonesia yang profesional.";
+                const userPrompt = `Analisis proyek "${currentSelectedProject.title}" dengan deskripsi: "${currentSelectedProject.desc}"`;
+
+                const payload = {
+                    contents: [{ role: 'user', parts: [{ text: userPrompt }] }],
+                    systemInstruction: { parts: [{ text: systemPrompt }] }
+                };
+
+                const apiKey = "";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+                let response;
+                let delay = 1000;
+                for (let i = 0; i < 3; i++) {
+                    try {
+                        response = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+                        if (response.ok) break;
+                    } catch (e) {
+                        if (i === 2) throw e;
+                    }
+                    await new Promise(r => setTimeout(r, delay));
+                    delay *= 2;
+                }
+
+                if (!response || !response.ok) throw new Error("API failed");
+                const result = await response.json();
+                const text = result.candidates?.[0]?.content?.parts?.[0]?.text || "Analisis tidak tersedia.";
+                insightBox.innerText = text;
+            } catch (err) {
+                insightBox.innerText = "Gagal memuat analisis AI. Silakan coba lagi.";
+            }
+        }
+
+        function openPersonalityModal() {
+            document.getElementById('personalityModal').classList.remove('hidden');
+            document.getElementById('personalityModal').classList.add('flex');
+            document.getElementById('personalityResultArea').classList.add('hidden');
+        }
+        function closePersonalityModal() {
+            document.getElementById('personalityModal').classList.add('hidden');
+            document.getElementById('personalityModal').classList.remove('flex');
+        }
+
+        async function runPersonalityAnalysis() {
+            const q1 = document.getElementById('pQ1').value;
+            const q2 = document.getElementById('pQ2').value;
+            const q3 = document.getElementById('pQ3').value;
+            const resultArea = document.getElementById('personalityResultArea');
+            const resultText = document.getElementById('personalityResultText');
+
+            resultArea.classList.remove('hidden');
+            resultText.innerHTML = '<span class="text-purple-400 animate-pulse">sedang menyusun profil psikologis & gaya kerja profesional Anda...</span>';
+
+            try {
+                const systemPrompt = "Anda adalah psikolog industri dan konsultan pengembangan karir profesional. Berdasarkan kuis kepribadian yang diisi oleh pengunjung/user website, buatkan analisis kepribadian, kekuatan profesional, dan saran pengembangan karir yang memotivasi dalam 2-3 paragraf berbahasa Indonesia yang memukau.";
+                const userPrompt = `Jawaban kuis pengunjung:\n1. Pendekatan mengatasi masalah: ${q1}\n2. Gaya komunikasi: ${q2}\n3. Etos kerja: ${q3}`;
+
+                const payload = {
+                    contents: [{ role: 'user', parts: [{ text: userPrompt }] }],
+                    systemInstruction: { parts: [{ text: systemPrompt }] }
+                };
+
+                const apiKey = "";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+                let response;
+                let delay = 1000;
+                for (let i = 0; i < 3; i++) {
+                    try {
+                        response = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+                        if (response.ok) break;
+                    } catch (e) {
+                        if (i === 2) throw e;
+                    }
+                    await new Promise(r => setTimeout(r, delay));
+                    delay *= 2;
+                }
+
+                if (!response || !response.ok) throw new Error("API failed");
+                const result = await response.json();
+                const text = result.candidates?.[0]?.content?.parts?.[0]?.text || "Analisis kepribadian tidak tersedia.";
+                resultText.innerText = text;
+            } catch (err) {
+                resultText.innerText = "Gagal terhubung. Silakan periksa koneksi internet Anda.";
+            }
+        }
+
+        // PIN & Photo Manager Modal
         function openPhotoManagerModal() {
             document.getElementById('photoManagerModal').classList.remove('hidden');
             document.getElementById('photoManagerModal').classList.add('flex');
@@ -673,7 +826,6 @@
                 reader.readAsDataURL(fileInput);
             } else if (urlInput) {
                 let finalUrl = urlInput;
-                // Convert Google Drive share link to direct view if applicable
                 if (urlInput.includes('drive.google.com')) {
                     const match = urlInput.match(/\/d\/([a-zA-Z0-9_-]+)/);
                     if (match && match[1]) {
@@ -710,90 +862,90 @@
 
         async function sendAiMessage() {
             const inputEl = document.getElementById('chatInput');
+            if (!inputEl) return;
             const prompt = inputEl.value.trim();
             if (!prompt) return;
 
             inputEl.value = '';
             const chatMessages = document.getElementById('aiChatMessages');
 
-            // Append loading indicator
             const loadingDiv = document.createElement('div');
             loadingDiv.className = 'p-3 rounded-xl bg-cyber-blue/10 border border-cyber-blue/30 text-cyber-blue animate-pulse';
-            loadingDiv.innerText = 'Syafril AI sedang menganalisis & menyimpan ke database...';
+            loadingDiv.innerText = 'Syafril AI sedang merespons...';
             chatMessages.appendChild(loadingDiv);
             chatMessages.scrollTop = chatMessages.scrollHeight;
 
             try {
-                const systemPrompt = "Anda adalah asisten AI resmi untuk Syafril Malik, seorang IT Specialist & IT Project Management Professional lulusan Teknik Informatika UNPAM (2023) dengan keahlian di bidang IT Support, IT Monitoring, dan Web Development. Jawab pertanyaan dengan ramah, profesional, dan informatif.";
+                const systemPrompt = "Anda adalah asisten AI resmi untuk Syafril Malik, seorang IT Specialist & IT Project Management Professional lulusan Teknik Informatika UNPAM dengan keahlian di bidang IT Support, IT Monitoring, dan Web Development. Jawab pertanyaan dengan ramah, profesional, dan informatif dalam bahasa Indonesia.";
                 
                 const payload = {
-                    contents: [{ parts: [{ text: prompt }] }],
+                    contents: [{ role: 'user', parts: [{ text: prompt }] }],
                     systemInstruction: { parts: [{ text: systemPrompt }] }
                 };
 
                 const apiKey = ""; 
                 const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
 
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
+                let response;
+                let retries = 3;
+                let delay = 1000;
+
+                for (let i = 0; i < retries; i++) {
+                    try {
+                        response = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+                        if (response.ok) break;
+                    } catch (netErr) {
+                        if (i === retries - 1) throw netErr;
+                    }
+                    await new Promise(res => setTimeout(res, delay));
+                    delay *= 2;
+                }
+
+                if (!response || !response.ok) throw new Error("API call failed");
                 
                 const result = await response.json();
-                const aiText = result.candidates?.[0]?.content?.parts?.[0]?.text || "Maaf, terjadi gangguan pada koneksi AI.";
+                const aiText = result.candidates?.[0]?.content?.parts?.[0]?.text || "Maaf, terjadi gangguan pada respons AI.";
 
                 const now = new Date();
                 const options = { timeZone: 'Asia/Jakarta', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
                 const timeString = new Intl.DateTimeFormat('id-ID', options).format(now);
 
-                const chatRecord = {
-                    userName: 'Pengunjung Website',
-                    prompt,
-                    reply: aiText,
-                    timestamp: now.toISOString(),
-                    timeString
-                };
-
-                if (db) {
-                    // Save to Firestore Rule 1 path
-                    const chatRef = collection(db, 'artifacts', appId, 'public', 'data', 'ai_chat_history');
-                    await addDoc(chatRef, chatRecord);
-                } else {
-                    // Fallback local render if offline
-                    chatMessages.removeChild(loadingDiv);
-                    
-                    const userDiv = document.createElement('div');
-                    userDiv.className = 'p-3 rounded-xl bg-black/60 border border-cyber-purple/30 text-slate-200 ml-6 text-right';
-                    userDiv.innerText = prompt;
-                    chatMessages.appendChild(userDiv);
-
-                    const aiDiv = document.createElement('div');
-                    aiDiv.className = 'p-3 rounded-xl bg-cyber-blue/10 border border-cyber-blue/30 text-slate-200 mr-6';
-                    aiDiv.innerText = aiText;
-                    chatMessages.appendChild(aiDiv);
-                    chatMessages.scrollTop = chatMessages.scrollHeight;
-                }
-
                 if (loadingDiv.parentNode) {
                     chatMessages.removeChild(loadingDiv);
                 }
+
+                // Render local preview of chat response
+                const userDiv = document.createElement('div');
+                userDiv.className = 'p-3 rounded-xl bg-black/60 border border-cyber-purple/30 text-slate-200 ml-6 text-right space-y-1';
+                userDiv.innerHTML = `
+                    <div class="text-[9px] text-slate-400 font-mono">Pengunjung Website • ${timeString}</div>
+                    <div>${prompt}</div>
+                `;
+                chatMessages.appendChild(userDiv);
+
+                const aiDiv = document.createElement('div');
+                aiDiv.className = 'p-3 rounded-xl bg-cyber-blue/10 border border-cyber-blue/30 text-slate-200 mr-6 space-y-1';
+                aiDiv.innerHTML = `
+                    <div class="text-[9px] text-cyber-blue font-cyber">Syafril AI</div>
+                    <div>${aiText}</div>
+                `;
+                chatMessages.appendChild(aiDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
 
             } catch (err) {
-                if (loadingDiv.parentNode) {
+                if (loadingDiv && loadingDiv.parentNode) {
                     chatMessages.removeChild(loadingDiv);
                 }
                 const errDiv = document.createElement('div');
-                errDiv.className = 'p-3 rounded-xl bg-rose-950/40 border border-rose-500/30 text-rose-400';
-                errDiv.innerText = "Maaf, AI sedang tidak dapat diakses saat ini.";
+                errDiv.className = 'p-3 rounded-xl bg-rose-950/40 border border-rose-500/30 text-rose-400 text-xs';
+                errDiv.innerText = "Maaf, AI sedang tidak dapat diakses saat ini. Periksa koneksi internet.";
                 chatMessages.appendChild(errDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
             }
-        }
-
-        // Project Filter Function
-        function filterProjects(cat) {
-            // Visual feedback for filter
-            console.log("Filtering by:", cat);
         }
     </script>
 </body>
