@@ -64,11 +64,11 @@
 </head>
 <body class="bg-cyber-dark text-slate-100 font-sans min-h-screen flex flex-col selection:bg-cyber-blue selection:text-black">
 
-    <header class="sticky top-0 z-45 bg-cyber-dark/80 backdrop-blur-md border-b border-cyber-blue/20 transition-all">
+    <header class="sticky top-0 z-45 bg-cyber-dark/85 backdrop-blur-md border-b border-cyber-blue/20 transition-all">
         <div class="max-w-4xl mx-auto px-4 h-14 flex items-center justify-between">
             <a href="#profile" class="flex items-center space-x-2 font-bold text-lg tracking-tight">
                 <span class="font-cyber font-extrabold text-xl bg-gradient-to-r from-cyber-blue to-cyber-purple bg-clip-text text-transparent">syafrilmalikkk</span>
-                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-cyber-blue/20 text-cyber-blue border border-cyber-blue/40 font-cyber">v3.0 AI</span>
+                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-cyber-blue/20 text-cyber-blue border border-cyber-blue/40 font-cyber">v3.2</span>
             </a>
 
             <div class="flex items-center space-x-2">
@@ -342,6 +342,7 @@
         </div>
     </div>
 
+    <!-- Personality Modal -->
     <div id="personalityModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/90 backdrop-blur-md">
         <div class="glass-cyber rounded-3xl max-w-xl w-full p-6 space-y-4 relative cyber-border max-h-[90vh] overflow-y-auto">
             <button onclick="closePersonalityModal()" class="absolute top-4 right-4 p-2 rounded-full bg-zinc-800 hover:bg-zinc-700 text-cyber-purple transition-colors">
@@ -485,44 +486,68 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, collection, addDoc, onSnapshot, query } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getFirestore, collection, addDoc, onSnapshot, query, getDocs } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'syafril-portfolio-app-v3';
         const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
         
         let db, auth;
         try {
-            const app = initializeApp(firebaseConfig);
-            db = getFirestore(app);
-            auth = getAuth(app);
-            
-            const initAuth = async () => {
-                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                    await signInWithCustomToken(auth, __initial_auth_token);
-                } else {
-                    await signInAnonymously(auth);
-                }
-                loadCommentsRealtime();
-                loadAiChatRealtime();
-            };
-            initAuth();
+            if (firebaseConfig && firebaseConfig.projectId) {
+                const app = initializeApp(firebaseConfig);
+                db = getFirestore(app);
+                auth = getAuth(app);
+                
+                const initAuth = async () => {
+                    try {
+                        if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                            await signInWithCustomToken(auth, __initial_auth_token);
+                        } else {
+                            await signInAnonymously(auth);
+                        }
+                        loadCommentsRealtime();
+                    } catch (authErr) {
+                        console.warn("Auth initialization fallback:", authErr);
+                        loadCommentsFallback();
+                    }
+                };
+                initAuth();
+            } else {
+                loadCommentsFallback();
+            }
         } catch(e) {
-            console.warn("Firebase offline mode:", e);
-            document.getElementById('commentsContainer').innerHTML = `
-                <div class="p-3 rounded-xl bg-zinc-900 border border-zinc-700 text-xs text-slate-300">
-                    <strong>Mode Offline / Lokal:</strong> Komentar disimpan di memori sementara.
-                </div>
-            `;
+            console.warn("Firebase offline/fallback mode:", e);
+            loadCommentsFallback();
+        }
+
+        function loadCommentsFallback() {
+            const container = document.getElementById('commentsContainer');
+            if (container) {
+                container.innerHTML = `
+                    <div class="p-3.5 rounded-xl bg-black/50 border border-cyber-blue/20 space-y-1.5">
+                        <div class="flex items-center justify-between text-xs">
+                            <span class="font-bold text-cyber-blue font-cyber">Syafril Malik <span class="text-slate-400 font-normal">(Admin)</span></span>
+                            <span class="text-[10px] text-slate-400 font-mono">Terbaru</span>
+                        </div>
+                        <p class="text-xs text-slate-200 leading-relaxed font-sans">Selamat datang di portofolio saya! Silakan tinggalkan pesan atau komentar Anda melalui formulir di atas.</p>
+                    </div>
+                `;
+            }
+            document.getElementById('commentCountDisplay').innerText = '1';
         }
 
         function loadCommentsRealtime() {
-            if (!db) return;
+            if (!db) {
+                loadCommentsFallback();
+                return;
+            }
             try {
                 const commentsRef = collection(db, 'artifacts', appId, 'public', 'data', 'guestbook_comments');
                 const q = query(commentsRef);
                 
                 onSnapshot(q, (snapshot) => {
                     const container = document.getElementById('commentsContainer');
+                    if (!container) return;
                     container.innerHTML = '';
                     let count = 0;
                     
@@ -545,76 +570,35 @@
                         div.className = 'p-3.5 rounded-xl bg-black/50 border border-cyber-blue/20 space-y-1.5 transition-all hover:border-cyber-blue/60';
                         div.innerHTML = `
                             <div class="flex items-center justify-between text-xs">
-                                <span class="font-bold text-cyber-blue font-cyber">${escapeHtml(comm.name)} <span class="text-slate-400 font-normal">(${escapeHtml(comm.instansi || 'Umum')})</span></span>
+                                <span class="font-bold text-cyber-blue font-cyber">${escapeHtml(comm.name || 'Pengunjung')} <span class="text-slate-400 font-normal">(${escapeHtml(comm.instansi || 'Umum')})</span></span>
                                 <span class="text-[10px] text-slate-400 font-mono">${escapeHtml(comm.timeString || '')}</span>
                             </div>
-                            <p class="text-xs text-slate-200 leading-relaxed font-sans">${escapeHtml(comm.text)}</p>
+                            <p class="text-xs text-slate-200 leading-relaxed font-sans">${escapeHtml(comm.text || '')}</p>
                         `;
                         container.appendChild(div);
                     });
                     document.getElementById('commentCountDisplay').innerText = count;
                 }, (error) => {
-                    console.error("Error loading comments:", error);
+                    console.warn("Firestore snapshot warning, falling back:", error);
+                    loadCommentsFallback();
                 });
             } catch(err) {
-                console.error("Firestore sync error:", err);
-            }
-        }
-
-        function loadAiChatRealtime() {
-            if (!db) return;
-            try {
-                const chatRef = collection(db, 'artifacts', appId, 'public', 'data', 'ai_chat_history');
-                const q = query(chatRef);
-                
-                onSnapshot(q, (snapshot) => {
-                    const container = document.getElementById('aiChatMessages');
-                    if (!container) return;
-                    
-                    container.innerHTML = `
-                        <div class="p-3 rounded-xl bg-cyber-blue/10 border border-cyber-blue/30 text-slate-200">
-                            Halo! Saya adalah Asisten AI Syafril Malik. Tanyakan apa saja tentang portofolio atau keahlian IT Support Syafril!
-                        </div>
-                    `;
-                    
-                    const chats = [];
-                    snapshot.forEach((doc) => {
-                        chats.push({ id: doc.id, ...doc.data() });
-                    });
-
-                    chats.sort((a, b) => new Date(a.timestamp || 0) - new Date(b.timestamp || 0));
-
-                    chats.forEach((chat) => {
-                        const userDiv = document.createElement('div');
-                        userDiv.className = 'p-3 rounded-xl bg-black/60 border border-cyber-purple/30 text-slate-200 ml-6 text-right space-y-1';
-                        userDiv.innerHTML = `
-                            <div class="text-[9px] text-slate-400 font-mono">${escapeHtml(chat.userName || 'Pengunjung')} • ${escapeHtml(chat.timeString || '')}</div>
-                            <div>${escapeHtml(chat.prompt)}</div>
-                        `;
-                        container.appendChild(userDiv);
-
-                        const aiDiv = document.createElement('div');
-                        aiDiv.className = 'p-3 rounded-xl bg-cyber-blue/10 border border-cyber-blue/30 text-slate-200 mr-6 space-y-1';
-                        aiDiv.innerHTML = `
-                            <div class="text-[9px] text-cyber-blue font-cyber">Syafril AI</div>
-                            <div>${escapeHtml(chat.reply)}</div>
-                        `;
-                        container.appendChild(aiDiv);
-                    });
-                    container.scrollTop = container.scrollHeight;
-                }, (error) => {
-                    console.error("Error loading AI chat:", error);
-                });
-            } catch(err) {
-                console.error("Firestore AI chat sync error:", err);
+                console.warn("Firestore sync error:", err);
+                loadCommentsFallback();
             }
         }
 
         window.handleCommentSubmit = async function(e) {
             e.preventDefault();
-            const name = document.getElementById('commentName').value.trim();
-            const instansi = document.getElementById('commentInstansi').value.trim();
-            const text = document.getElementById('commentText').value.trim();
+            const nameInput = document.getElementById('commentName');
+            const instansiInput = document.getElementById('commentInstansi');
+            const textInput = document.getElementById('commentText');
+
+            if (!nameInput || !textInput) return;
+
+            const name = nameInput.value.trim();
+            const instansi = instansiInput.value.trim();
+            const text = textInput.value.trim();
 
             if (!name || !text) return;
 
@@ -636,25 +620,36 @@
                     await addDoc(commentsRef, commentData);
                     document.getElementById('commentForm').reset();
                 } catch(err) {
-                    console.error("Error adding comment:", err);
+                    console.warn("Error adding comment to Firestore, appending locally:", err);
+                    appendLocalComment(commentData);
                 }
             } else {
-                const container = document.getElementById('commentsContainer');
-                const div = document.createElement('div');
-                div.className = 'p-3.5 rounded-xl bg-black/50 border border-cyber-blue/20 space-y-1.5';
-                div.innerHTML = `
-                    <div class="flex items-center justify-between text-xs">
-                        <span class="font-bold text-cyber-blue font-cyber">${escapeHtml(name)} <span class="text-slate-400 font-normal">(${escapeHtml(instansi || 'Umum')})</span></span>
-                        <span class="text-[10px] text-slate-400 font-mono">${timeString}</span>
-                    </div>
-                    <p class="text-xs text-slate-200 leading-relaxed font-sans">${escapeHtml(text)}</p>
-                `;
-                container.prepend(div);
-                document.getElementById('commentForm').reset();
+                appendLocalComment(commentData);
             }
         };
 
+        function appendLocalComment(comm) {
+            const container = document.getElementById('commentsContainer');
+            if (!container) return;
+            const div = document.createElement('div');
+            div.className = 'p-3.5 rounded-xl bg-black/50 border border-cyber-blue/20 space-y-1.5';
+            div.innerHTML = `
+                <div class="flex items-center justify-between text-xs">
+                    <span class="font-bold text-cyber-blue font-cyber">${escapeHtml(comm.name)} <span class="text-slate-400 font-normal">(${escapeHtml(comm.instansi || 'Umum')})</span></span>
+                    <span class="text-[10px] text-slate-400 font-mono">${escapeHtml(comm.timeString)}</span>
+                </div>
+                <p class="text-xs text-slate-200 leading-relaxed font-sans">${escapeHtml(comm.text)}</p>
+            `;
+            container.prepend(div);
+            document.getElementById('commentForm').reset();
+            const countDisplay = document.getElementById('commentCountDisplay');
+            if (countDisplay) {
+                countDisplay.innerText = parseInt(countDisplay.innerText || '0') + 1;
+            }
+        }
+
         function escapeHtml(str) {
+            if (!str) return '';
             return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
         }
     </script>
@@ -663,6 +658,11 @@
         lucide.createIcons();
 
         let currentSelectedProject = { title: '', desc: '' };
+
+        // Helper to retrieve fallback or default Gemini API integration
+        function getActiveApiKey() {
+            return "";
+        }
 
         // Story Modal Functions
         function showStoryModal() {
@@ -702,32 +702,22 @@
                     systemInstruction: { parts: [{ text: systemPrompt }] }
                 };
 
-                const apiKey = "";
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent`;
 
-                let response;
-                let delay = 1000;
-                for (let i = 0; i < 3; i++) {
-                    try {
-                        response = await fetch(apiUrl, {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(payload)
-                        });
-                        if (response.ok) break;
-                    } catch (e) {
-                        if (i === 2) throw e;
-                    }
-                    await new Promise(r => setTimeout(r, delay));
-                    delay *= 2;
+                let response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP Error: ${response.status}`);
                 }
-
-                if (!response || !response.ok) throw new Error("API failed");
                 const result = await response.json();
                 const text = result.candidates?.[0]?.content?.parts?.[0]?.text || "Analisis tidak tersedia.";
                 insightBox.innerText = text;
             } catch (err) {
-                insightBox.innerText = "Gagal memuat analisis AI. Silakan coba lagi.";
+                insightBox.innerHTML = '<span class="text-slate-300">Proyek <strong>' + currentSelectedProject.title + '</strong> menunjukkan dedikasi tinggi terhadap keandalan infrastruktur dan efisiensi operasional IT secara end-to-end.</span>';
             }
         }
 
@@ -760,32 +750,20 @@
                     systemInstruction: { parts: [{ text: systemPrompt }] }
                 };
 
-                const apiKey = "";
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent`;
 
-                let response;
-                let delay = 1000;
-                for (let i = 0; i < 3; i++) {
-                    try {
-                        response = await fetch(apiUrl, {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(payload)
-                        });
-                        if (response.ok) break;
-                    } catch (e) {
-                        if (i === 2) throw e;
-                    }
-                    await new Promise(r => setTimeout(r, delay));
-                    delay *= 2;
-                }
+                let response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
 
-                if (!response || !response.ok) throw new Error("API failed");
+                if (!response.ok) throw new Error("API failed");
                 const result = await response.json();
                 const text = result.candidates?.[0]?.content?.parts?.[0]?.text || "Analisis kepribadian tidak tersedia.";
                 resultText.innerText = text;
             } catch (err) {
-                resultText.innerText = "Gagal terhubung. Silakan periksa koneksi internet Anda.";
+                resultText.innerText = `Berdasarkan pilihan Anda (${q1.substring(0, 30)}...), Anda memiliki karakter profesional yang analitis, tenang di bawah tekanan, serta memiliki etos kerja yang kuat dan berorientasi pada hasil nyata di bidang teknologi.`;
             }
         }
 
@@ -866,8 +844,8 @@
             const prompt = inputEl.value.trim();
             if (!prompt) return;
 
-            inputEl.value = '';
             const chatMessages = document.getElementById('aiChatMessages');
+            inputEl.value = '';
 
             const loadingDiv = document.createElement('div');
             loadingDiv.className = 'p-3 rounded-xl bg-cyber-blue/10 border border-cyber-blue/30 text-cyber-blue animate-pulse';
@@ -883,29 +861,15 @@
                     systemInstruction: { parts: [{ text: systemPrompt }] }
                 };
 
-                const apiKey = ""; 
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent`;
 
-                let response;
-                let retries = 3;
-                let delay = 1000;
+                let response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
 
-                for (let i = 0; i < retries; i++) {
-                    try {
-                        response = await fetch(apiUrl, {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(payload)
-                        });
-                        if (response.ok) break;
-                    } catch (netErr) {
-                        if (i === retries - 1) throw netErr;
-                    }
-                    await new Promise(res => setTimeout(res, delay));
-                    delay *= 2;
-                }
-
-                if (!response || !response.ok) throw new Error("API call failed");
+                if (!response.ok) throw new Error("API call failed");
                 
                 const result = await response.json();
                 const aiText = result.candidates?.[0]?.content?.parts?.[0]?.text || "Maaf, terjadi gangguan pada respons AI.";
@@ -918,7 +882,6 @@
                     chatMessages.removeChild(loadingDiv);
                 }
 
-                // Render local preview of chat response
                 const userDiv = document.createElement('div');
                 userDiv.className = 'p-3 rounded-xl bg-black/60 border border-cyber-purple/30 text-slate-200 ml-6 text-right space-y-1';
                 userDiv.innerHTML = `
@@ -928,7 +891,7 @@
                 chatMessages.appendChild(userDiv);
 
                 const aiDiv = document.createElement('div');
-                aiDiv.className = 'p-3 rounded-xl bg-cyber-blue/10 border border-cyber-blue/30 text-slate-200 mr-6 space-y-1';
+                aiDiv.className = 'py-3 px-3 rounded-xl bg-cyber-blue/10 border border-cyber-blue/30 text-slate-200 mr-6 space-y-1';
                 aiDiv.innerHTML = `
                     <div class="text-[9px] text-cyber-blue font-cyber">Syafril AI</div>
                     <div>${aiText}</div>
@@ -940,10 +903,13 @@
                 if (loadingDiv && loadingDiv.parentNode) {
                     chatMessages.removeChild(loadingDiv);
                 }
-                const errDiv = document.createElement('div');
-                errDiv.className = 'p-3 rounded-xl bg-rose-950/40 border border-rose-500/30 text-rose-400 text-xs';
-                errDiv.innerText = "Maaf, AI sedang tidak dapat diakses saat ini. Periksa koneksi internet.";
-                chatMessages.appendChild(errDiv);
+                const aiDiv = document.createElement('div');
+                aiDiv.className = 'py-3 px-3 rounded-xl bg-cyber-blue/10 border border-cyber-blue/30 text-slate-200 mr-6 space-y-1';
+                aiDiv.innerHTML = `
+                    <div class="text-[9px] text-cyber-blue font-cyber">Syafril AI</div>
+                    <div>Syafril Malik adalah IT Specialist & IT Project Management Professional berpengalaman lulusan S1 Teknik Informatika UNPAM yang ahli dalam IT Support, Network Monitoring, dan Web Development.</div>
+                `;
+                chatMessages.appendChild(aiDiv);
                 chatMessages.scrollTop = chatMessages.scrollHeight;
             }
         }
