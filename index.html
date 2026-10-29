@@ -1,941 +1,199 @@
 <!DOCTYPE html>
-<html lang="id" class="dark">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Syafril Malik | IT Specialist & Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        cyber: {
-                            dark: '#050b14',
-                            card: '#0a1527',
-                            border: '#00f0ff',
-                            blue: '#00f0ff',
-                            purple: '#b026ff',
-                            pink: '#ff007f'
-                        }
-                    },
-                    fontFamily: {
-                        cyber: ['Orbitron', 'sans-serif'],
-                        sans: ['Rajdhani', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        .glass-cyber {
-            background: rgba(10, 21, 39, 0.75);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(0, 240, 255, 0.2);
-        }
-        .story-ring-cyber {
-            background: linear-gradient(45deg, #00f0ff, #b026ff, #ff007f);
-        }
-        .scanline {
-            position: relative;
-            overflow: hidden;
-        }
-        .scanline::before {
-            content: " ";
-            display: block;
-            position: absolute;
-            top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
-            background-size: 100% 4px;
-            z-index: 10;
-            pointer-events: none;
-            opacity: 0.3;
-        }
-        /* Custom scrollbar */
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: #050b14; }
-        ::-webkit-scrollbar-thumb { background: #00f0ff44; border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: #00f0ff; }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Syafril Malik – IT & Monitoring</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#000;--surface:#101010;--ink:#f3f5f7;--mute:#8b8f96;--line:#2a2a2d;--red:#ff3040;color-scheme:dark;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root:not([data-theme="light"]),:root[data-theme="dark"]{--bg:#000;--ink:#f3f5f7}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px);height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 "Schibsted Grotesk",system-ui,sans-serif}
+a{color:var(--ink)}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.col{max-width:640px;margin:0 auto;padding:0 20px 90px}
+.top{display:flex;justify-content:space-between;align-items:center;padding:20px 0 6px;color:var(--mute);font-size:14px}
+.top b{color:var(--ink);font-size:17px}
+.me{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;padding:22px 0 18px}
+h1{margin:0;font-size:clamp(34px,8vw,46px);font-weight:800;letter-spacing:-.025em;line-height:1.05}
+.role{margin:8px 0 0}.org{color:var(--mute);margin:2px 0 0}
+.st{display:inline-flex;align-items:center;gap:8px;color:var(--mute);font-size:14px;margin-top:14px}
+.st i{width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 10px var(--red)}
+.av{width:84px;height:84px;border-radius:50%;object-fit:cover;object-position:50% 25%;border:2px solid var(--line);flex:none}
+.me .av{border-color:var(--red)}
+.bio{margin:0 0 18px;max-width:52ch}
+.act{display:flex;gap:10px;margin-bottom:6px}
+.btn{flex:1;text-align:center;font:500 15px "Schibsted Grotesk",sans-serif;padding:9px 16px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;text-decoration:none}
+.btn.p{background:var(--ink);color:#000;border-color:var(--ink)}
+.tabs{display:flex;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);z-index:5;margin:12px -20px 0;border-bottom:1px solid var(--line)}
+.tabs button{flex:1;padding:14px 4px;background:none;border:0;border-bottom:2px solid transparent;color:var(--mute);font:500 14px "Schibsted Grotesk",sans-serif;cursor:pointer;margin-bottom:-1px}
+.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--red)}
+.post{display:grid;grid-template-columns:40px 1fr;gap:12px;padding-top:18px}
+.post .av{width:40px;height:40px;border-width:1px}
+.rail{display:flex;flex-direction:column;align-items:center;gap:6px}
+.line{flex:1;width:2px;border-radius:2px;background:var(--line);min-height:20px}
+.post:last-child .line{display:none}
+.pb{padding-bottom:20px;min-width:0}
+.ph{display:flex;justify-content:space-between;gap:10px}
+.ph b{font-weight:700;overflow-wrap:anywhere}.ph span{color:var(--mute);font-size:14px;white-space:nowrap}
+.sub{color:var(--mute);font-size:15px}
+.pb p{margin:6px 0 0;overflow-wrap:anywhere}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.tags span{font-size:13px;padding:2px 10px;border-radius:99px;border:1px solid var(--line);color:var(--mute)}
+.lk{display:inline-block;margin-top:10px;color:var(--red);font-size:14px;text-decoration:none}
+.lk:hover{text-decoration:underline}
+.tools{display:flex;gap:16px;margin-top:10px}.tools button{background:none;border:0;padding:0;color:var(--mute);font:500 13px "Schibsted Grotesk",sans-serif;cursor:pointer;text-decoration:underline}
+.empty{border:1px dashed var(--line);border-radius:12px;padding:30px 20px;color:var(--mute);text-align:center;margin-top:20px}
+.admin{display:none;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--red);border-radius:12px;padding:18px;margin-top:18px}
+.admin.on{display:block}.admin h2{margin:0 0 12px;font-size:17px}
+.f{display:grid;gap:10px}
+input,textarea{width:100%;font:400 16px "Schibsted Grotesk",sans-serif;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:#000;color:var(--ink)}
+.row{display:flex;gap:10px}
+.ct{margin-top:30px;padding-top:20px;border-top:1px solid var(--line);color:var(--mute);font-size:14px}
+#fab{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:20;display:none}
+#fab .btn{background:var(--red);border-color:var(--red);color:#fff;font-weight:700;padding:12px 20px;box-shadow:0 6px 24px rgba(255,48,64,.35)}
+#chat{position:fixed;right:18px;bottom:calc(74px + env(safe-area-inset-bottom,0px));width:min(380px,calc(100vw - 36px));height:min(520px,70vh);background:var(--surface);border:1px solid var(--line);border-radius:16px;display:none;flex-direction:column;z-index:21}
+#chat.on{display:flex}
+#chat header{padding:14px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;font-weight:700}
+#chat header button{background:none;border:0;color:var(--mute);font:inherit;font-weight:400;cursor:pointer}
+#msgs{flex:1;overflow:auto;padding:14px;display:flex;flex-direction:column;gap:10px;font-size:15px}
+.m{padding:9px 13px;border-radius:14px;max-width:88%;white-space:pre-wrap}
+.m.u{align-self:flex-end;background:var(--ink);color:#000}.m.a{background:#000;border:1px solid var(--line)}
+#cf{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line)}#cf .btn{flex:none}
+.md{display:grid;gap:4px;margin-top:10px;border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+.md.m2,.md.m3,.md.m4{grid-template-columns:1fr 1fr}.md.m3>:first-child{grid-column:1/-1}
+.md img,.md video{width:100%;height:100%;max-height:420px;object-fit:cover;display:block;background:#000;cursor:zoom-in}.md video{cursor:auto}
+.md.m1 img,.md.m1 video{max-height:520px;object-fit:contain}
+.pv{display:flex;flex-wrap:wrap;gap:6px}.pvi{font-size:13px;border:1px solid var(--line);border-radius:99px;padding:2px 6px 2px 10px;color:var(--mute)}.pvi button{background:none;border:0;color:var(--red);cursor:pointer;font-size:16px}
+input[type=file]{padding:8px;font-size:14px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
 </head>
-<body class="bg-cyber-dark text-slate-100 font-sans min-h-screen flex flex-col selection:bg-cyber-blue selection:text-black">
-
-    <header class="sticky top-0 z-45 bg-cyber-dark/85 backdrop-blur-md border-b border-cyber-blue/20 transition-all">
-        <div class="max-w-4xl mx-auto px-4 h-14 flex items-center justify-between">
-            <a href="#profile" class="flex items-center space-x-2 font-bold text-lg tracking-tight">
-                <span class="font-cyber font-extrabold text-xl bg-gradient-to-r from-cyber-blue to-cyber-purple bg-clip-text text-transparent">syafrilmalikkk</span>
-                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-cyber-blue/20 text-cyber-blue border border-cyber-blue/40 font-cyber">v3.4</span>
-            </a>
-
-            <div class="flex items-center space-x-2">
-                <button onclick="openAiChatModal()" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-cyber-blue/20 to-cyber-purple/20 border border-cyber-blue/50 hover:border-cyber-blue text-xs font-semibold text-cyber-blue transition-colors shadow-lg shadow-cyber-blue/10" title="Tanya Syafril AI">
-                    <i data-lucide="bot" class="w-4 h-4"></i>
-                    <span class="font-cyber">Tanya AI</span>
-                </button>
-                <button onclick="openPhotoManagerModal()" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-zinc-900 border border-cyber-blue/30 hover:border-cyber-blue text-xs font-semibold text-cyber-blue transition-colors" title="Ubah Foto dengan PIN">
-                    <i data-lucide="lock" class="w-4 h-4 text-amber-400"></i>
-                    <span class="hidden sm:inline font-cyber">Ubah Foto</span>
-                </button>
-            </div>
-        </div>
-    </header>
-
-    <main class="flex-grow max-w-4xl mx-auto w-full px-4 pt-6 pb-16">
-        <section id="profile" class="pb-8 border-b border-cyber-blue/20">
-            <div class="glass-cyber rounded-3xl p-6 sm:p-8 shadow-xl cyber-border scanline relative overflow-hidden">
-                <div class="grid grid-cols-3 gap-4 md:gap-8 items-center">
-                    
-                    <div class="flex justify-center">
-                        <div class="relative p-[3px] rounded-full story-ring-cyber shadow-lg cursor-pointer group" onclick="showStoryModal()">
-                            <div class="w-20 h-20 sm:w-36 sm:h-36 rounded-full bg-black p-[2px] overflow-hidden">
-                                <img id="profileImageDisplay" src="https://lh3.googleusercontent.com/d/1X3UUiHZFCF_82G43u9sGYjzpsk2zmc_C=s1000" alt="Syafril Malik Profile" class="w-full h-full object-cover rounded-full group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/400x400?text=SM'">
-                            </div>
-                            <div class="absolute bottom-1 right-1 w-6 h-6 bg-cyber-blue text-black rounded-full flex items-center justify-center border-2 border-black text-xs font-bold font-cyber shadow">
-                                +
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-span-2 space-y-4">
-                        <div class="flex flex-col sm:flex-row sm:items-center gap-3">
-                            <h1 class="text-xl sm:text-2xl font-extrabold tracking-tight font-cyber">Syafril Malik</h1>
-                            <div class="flex flex-wrap items-center gap-2">
-                                <a href="https://wa.me/6281545842290?text=Halo%20Syafril%2C%20saya%20tertarik%20berkolaborasi." target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition-colors text-center shadow-md shadow-emerald-600/30 font-cyber flex items-center space-x-1.5">
-                                    <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
-                                    <span>WhatsApp</span>
-                                </a>
-                                <a href="https://t.me/syafrilmalik" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold transition-colors text-center font-cyber flex items-center space-x-1.5">
-                                    <i data-lucide="send" class="w-3.5 h-3.5"></i>
-                                    <span>Telegram</span>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="flex space-x-6 text-sm sm:text-base font-cyber">
-                            <div><strong class="font-bold text-cyber-blue">5</strong> <span class="text-slate-400">proyek</span></div>
-                            <div><strong class="font-bold text-cyber-purple" id="commentCountDisplay">0</strong> <span class="text-slate-400">komentar</span></div>
-                        </div>
-
-                        <div class="space-y-1 text-sm">
-                            <p class="font-bold text-cyber-blue font-cyber text-sm tracking-wider">IT Specialist & IT Project Management Professional</p>
-                            <p class="text-slate-300 leading-relaxed font-sans">
-                                Informatics Engineering UNPAM. Passionate about IT support, IT Monitoring, IT development! 🍳💻
-                            </p>
-                            <div class="pt-1 flex flex-wrap gap-x-4 gap-y-2 text-xs font-medium text-cyber-blue">
-                                <a href="mailto:syafrilmalik11@gmail.com?subject=Inquiry%20from%20Portfolio" class="hover:underline flex items-center space-x-1 bg-cyber-blue/10 px-2.5 py-1 rounded-lg border border-cyber-blue/30 text-cyber-blue font-semibold">
-                                    <i data-lucide="mail" class="w-3.5 h-3.5 inline"></i>
-                                    <span>syafrilmalik11@gmail.com</span>
-                                </a>
-                                <span class="text-slate-400 flex items-center">South Tangerang, ID</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <section class="mt-8">
-            <div class="glass-cyber rounded-3xl p-6 cyber-border bg-gradient-to-r from-cyber-card via-black to-cyber-card relative overflow-hidden">
-                <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
-                <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-                    <div class="space-y-2 text-left">
-                        <div class="inline-flex items-center space-x-2 px-2.5 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-300 text-xs font-cyber">
-                            <i data-lucide="user-check" class="w-3.5 h-3.5"></i>
-                            <span>AI Visitor Personality Insights</span>
-                        </div>
-                        <h2 class="text-lg font-bold font-cyber text-white">Cek Kepribadian & Gaya Kerja Profesional Anda</h2>
-                        <p class="text-xs text-slate-300 max-w-xl">
-                            Ingin tahu tipe kepribadian dan gaya kerja Anda di dunia profesional? Pilih opsi di bawah untuk dianalisis!
-                        </p>
-                    </div>
-                    <button onclick="openPersonalityModal()" class="px-5 py-3 rounded-xl bg-gradient-to-r from-cyber-purple to-cyber-pink text-white font-extrabold text-xs font-cyber uppercase tracking-wider hover:opacity-90 transition-all shadow-lg shadow-purple-500/30 flex items-center space-x-2 whitespace-nowrap">
-                        <i data-lucide="sparkles" class="w-4 h-4"></i>
-                        <span>Cek Kepribadian Saya</span>
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <section class="mt-8">
-            <div class="flex items-center justify-between mb-6">
-                <div class="flex items-center space-x-2 font-cyber text-sm tracking-widest text-cyber-blue">
-                    <i data-lucide="grid" class="w-4 h-4"></i>
-                    <span>PROYEK & PORTOFOLIO (5)</span>
-                </div>
-                <div class="text-xs text-slate-400 font-cyber">Klik untuk Analisis AI</div>
-            </div>
-
-            <div id="portfolioGrid" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4">
-                <!-- Proyek 1 -->
-                <div class="group relative bg-cyber-card rounded-2xl overflow-hidden border border-cyber-blue/20 hover:border-cyber-blue transition-all shadow-lg aspect-square flex flex-col justify-end p-4 cursor-pointer" onclick="openProjectModal('IT Support & Infrastructure', 'Menyediakan layanan pemeliharaan perangkat keras, jaringan LAN/WAN, troubleshooting OS, serta manajemen infrastruktur IT kantor secara end-to-end.', 'support', 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&q=80&w=600')">
-                    <img id="portImg1" src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&q=80&w=600" alt="IT Support" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-60 group-hover:opacity-80">
-                    <div class="absolute inset-0 bg-gradient-to-t from-cyber-dark via-cyber-dark/40 to-transparent"></div>
-                    <div class="relative z-10 space-y-1">
-                        <span class="text-[10px] font-cyber px-2 py-0.5 rounded bg-cyber-blue/20 text-cyber-blue border border-cyber-blue/40">IT Support</span>
-                        <h3 class="font-cyber font-bold text-sm text-white">Infrastruktur & Support</h3>
-                    </div>
-                </div>
-
-                <!-- Proyek 2 -->
-                <div class="group relative bg-cyber-card rounded-2xl overflow-hidden border border-cyber-purple/20 hover:border-cyber-purple transition-all shadow-lg aspect-square flex flex-col justify-end p-4 cursor-pointer" onclick="openProjectModal('Enterprise IT Monitoring', 'Implementasi sistem pemantauan server, uptime jaringan, dan alert otomatis menggunakan tool enterprise modern demi meminimalkan downtime.', 'monitoring', 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600')">
-                    <img id="portImg2" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600" alt="Monitoring" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-60 group-hover:opacity-80">
-                    <div class="absolute inset-0 bg-gradient-to-t from-cyber-dark via-cyber-dark/40 to-transparent"></div>
-                    <div class="relative z-10 space-y-1">
-                        <span class="text-[10px] font-cyber px-2 py-0.5 rounded bg-cyber-purple/20 text-cyber-purple border border-cyber-purple/40">Monitoring</span>
-                        <h3 class="font-cyber font-bold text-sm text-white">IT Monitoring System</h3>
-                    </div>
-                </div>
-
-                <!-- Proyek 3 -->
-                <div class="group relative bg-cyber-card rounded-2xl overflow-hidden border border-cyber-pink/20 hover:border-cyber-pink transition-all shadow-lg aspect-square flex flex-col justify-end p-4 cursor-pointer" onclick="openProjectModal('Fullstack Web Development', 'Pengembangan aplikasi web responsif berstandar industri dengan arsitektur modern, integrasi database, dan performa tinggi.', 'dev', 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=600')">
-                    <img id="portImg3" src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=600" alt="Web Development" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-60 group-hover:opacity-80">
-                    <div class="absolute inset-0 bg-gradient-to-t from-cyber-dark via-cyber-dark/40 to-transparent"></div>
-                    <div class="relative z-10 space-y-1">
-                        <span class="text-[10px] font-cyber px-2 py-0.5 rounded bg-cyber-pink/20 text-cyber-pink border border-cyber-pink/40">Dev & Web</span>
-                        <h3 class="font-cyber font-bold text-sm text-white">Web Platform</h3>
-                    </div>
-                </div>
-
-                <!-- Proyek 4 -->
-                <div class="group relative bg-cyber-card rounded-2xl overflow-hidden border border-emerald-500/20 hover:border-emerald-500 transition-all shadow-lg aspect-square flex flex-col justify-end p-4 cursor-pointer" onclick="openProjectModal('IT Project Management', 'Manajemen siklus hidup proyek IT mulai dari perencanaan, manajemen sumber daya, alokasi anggaran, hingga eksekusi tepat waktu.', 'dev', 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=600')">
-                    <img id="portImg4" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=600" alt="Project Management" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-60 group-hover:opacity-80">
-                    <div class="absolute inset-0 bg-gradient-to-t from-cyber-dark via-cyber-dark/40 to-transparent"></div>
-                    <div class="relative z-10 space-y-1">
-                        <span class="text-[10px] font-cyber px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">Management</span>
-                        <h3 class="font-cyber font-bold text-sm text-white">IT Project Lead</h3>
-                    </div>
-                </div>
-
-                <!-- Proyek 5 (About Me) -->
-                <div class="group relative bg-cyber-card rounded-2xl overflow-hidden border border-cyan-400/20 hover:border-cyan-400 transition-all shadow-lg aspect-square flex flex-col justify-end p-4 cursor-pointer" onclick="openProjectModal('About Me - Syafril Malik', 'Profil Profesional\nSyafril Malik\nIT Support & Monitoring Professional\n\nSeorang praktisi Teknologi Informasi lulusan S1 Teknik Informatika dengan pengalaman mendalam dalam pengelolaan infrastruktur sistem, pengawasan jaringan, serta pemecahan masalah teknis di lingkungan operasional berskala perusahaan. Saat ini memegang peran krusial sebagai IT Support & Monitoring di perusahaan penyedia layanan manajemen dan distribusi kas, memastikan keandalan, stabilitas, serta efisiensi operasional sistem IT secara berkelanjutan.\n\nMemiliki kompetensi kuat dalam manajemen infrastruktur penyimpanan data modern, pemeliharaan', 'support', 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=600')">
-                    <img id="portImg5" src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=600" alt="About Me Syafril Malik" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-60 group-hover:opacity-80">
-                    <div class="absolute inset-0 bg-gradient-to-t from-cyber-dark via-cyber-dark/40 to-transparent"></div>
-                    <div class="relative z-10 space-y-1">
-                        <span class="text-[10px] font-cyber px-2 py-0.5 rounded bg-cyan-400/20 text-cyan-300 border border-cyan-400/40">About Me</span>
-                        <h3 class="font-cyber font-bold text-sm text-white">Profil Syafril Malik</h3>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="mt-12 glass-cyber rounded-3xl p-6 sm:p-8 cyber-border">
-            <div class="flex items-center justify-between mb-6">
-                <div class="flex items-center space-x-2 font-cyber text-cyber-blue">
-                    <i data-lucide="message-square" class="w-5 h-5"></i>
-                    <h2 class="text-base sm:text-lg font-bold">BUKU TAMU & KOMENTAR REALTIME</h2>
-                </div>
-                <div class="text-xs bg-cyber-green/10 border border-cyber-blue/30 px-3 py-1 rounded-full text-cyber-blue font-cyber">Database Online</div>
-            </div>
-
-            <!-- Comment Form -->
-            <form id="commentForm" onsubmit="handleCommentSubmit(event)" class="space-y-4 mb-8">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-cyber text-slate-300 mb-1">NAMA ANDA</label>
-                        <input type="text" id="commentName" required placeholder="cth: Rekruter PT X" class="w-full bg-black/60 border border-cyber-blue/30 focus:border-cyber-blue rounded-xl px-4 py-2.5 text-sm outline-none transition-colors">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-cyber text-slate-300 mb-1">INSTANSI / PERUSAHAAN</label>
-                        <input type="text" id="commentInstansi" placeholder="cth: IT Department" class="w-full bg-black/60 border border-cyber-blue/30 focus:border-cyber-blue rounded-xl px-4 py-2.5 text-sm outline-none transition-colors">
-                    </div>
-                </div>
-                <div>
-                    <label class="block text-xs font-cyber text-slate-300 mb-1">PESAN / KOMENTAR</label>
-                    <textarea id="commentText" required rows="3" placeholder="Tuliskan pesan atau kesan portofolio..." class="w-full bg-black/60 border border-cyber-blue/30 focus:border-cyber-blue rounded-xl px-4 py-2.5 text-sm outline-none transition-colors resize-none"></textarea>
-                </div>
-                <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-cyber-blue to-cyber-purple text-black font-extrabold text-sm font-cyber uppercase tracking-wider hover:opacity-90 transition-opacity shadow-lg shadow-cyber-blue/20 flex items-center justify-center space-x-2">
-                    <i data-lucide="send" class="w-4 h-4"></i>
-                    <span>Kirim Komentar Realtime</span>
-                </button>
-            </form>
-
-            <!-- Comments List -->
-            <div id="commentsContainer" class="space-y-3 max-h-96 overflow-y-auto pr-1">
-                <div class="p-4 rounded-xl bg-black/40 border border-cyber-blue/20 animate-pulse text-xs text-slate-400">
-                    Memuat komentar realtime dari database...
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="py-8 border-t border-cyber-blue/20 text-center text-xs text-slate-400 space-y-4 bg-cyber-dark/80 backdrop-blur-md">
-        <div class="flex flex-wrap justify-center gap-4 px-4">
-            <a href="https://wa.me/6281545842290?text=Halo%20Syafril" target="_blank" rel="noopener noreferrer" class="hover:text-cyber-blue transition-colors flex items-center space-x-1.5 font-semibold font-cyber bg-emerald-950/40 px-3 py-1.5 rounded-xl border border-emerald-500/30 text-emerald-400">
-                <i data-lucide="message-circle" class="w-4 h-4"></i>
-                <span>WhatsApp: 081545842290</span>
-            </a>
-            <a href="https://t.me/syafrilmalik" target="_blank" rel="noopener noreferrer" class="hover:text-cyber-blue transition-colors flex items-center space-x-1.5 font-semibold font-cyber bg-sky-950/40 px-3 py-1.5 rounded-xl border border-sky-500/30 text-sky-400">
-                <i data-lucide="send" class="w-4 h-4"></i>
-                <span>Telegram: @syafrilmalik</span>
-            </a>
-            <a href="mailto:syafrilmalik11@gmail.com" class="hover:text-cyber-blue transition-colors flex items-center space-x-1.5 font-semibold font-cyber bg-rose-950/40 px-3 py-1.5 rounded-xl border border-rose-500/30 text-rose-400">
-                <i data-lucide="mail" class="w-4 h-4"></i>
-                <span>Email: syafrilmalik11@gmail.com</span>
-            </a>
-        </div>
-        <p class="font-sans">© 2026 Syafril Malik • Portfolio </p>
-    </footer>
-
-    <!-- Story Modal -->
-    <div id="storyModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/90 backdrop-blur-md">
-        <div class="glass-cyber rounded-3xl max-w-sm w-full p-6 text-center space-y-6 relative cyber-border">
-            <button onclick="closeStoryModal()" class="absolute top-4 right-4 p-2 rounded-full bg-zinc-800 hover:bg-zinc-700 text-cyber-blue transition-colors">
-                <i data-lucide="x" class="w-5 h-5"></i>
-            </button>
-            <div class="w-24 h-24 rounded-full mx-auto p-[3px] story-ring-cyber">
-                <img id="storyModalImg" src="https://lh3.googleusercontent.com/d/1X3UUiHZFCF_82G43u9sGYjzpsk2zmc_C=s1000" alt="Syafril" class="w-full h-full object-cover rounded-full">
-            </div>
-            <div class="space-y-2">
-                <h3 class="font-extrabold text-lg font-cyber text-cyber-blue">Syafril Malik's Story</h3>
-                <p class="text-xs text-slate-300 leading-relaxed font-sans">
-                    "Always ready to deliver clean solutions, robust network architectures, and impactful digital experiences."
-                </p>
-            </div>
-            <div class="pt-2 flex flex-col space-y-2.5">
-                <a href="https://wa.me/6281545842290?text=Halo%20Syafril" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-colors flex items-center justify-center space-x-2 font-cyber uppercase shadow-md shadow-emerald-600/30">
-                    <i data-lucide="message-circle" class="w-4 h-4"></i>
-                    <span>WhatsApp: 081545842290</span>
-                </a>
-                <a href="https://t.me/syafrilmalik" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs transition-colors flex items-center justify-center space-x-2 font-cyber uppercase shadow-md shadow-sky-600/30">
-                    <i data-lucide="send" class="w-4 h-4"></i>
-                    <span>Telegram: @syafrilmalik</span>
-                </a>
-                <a href="mailto:syafrilmalik11@gmail.com" class="w-full py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs transition-colors flex items-center justify-center space-x-2 font-cyber uppercase shadow-md shadow-rose-600/30">
-                    <i data-lucide="mail" class="w-4 h-4"></i>
-                    <span>Email: syafrilmalik11@gmail.com</span>
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Project Detail Modal -->
-    <div id="projectModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/85 backdrop-blur-md">
-        <div class="glass-cyber rounded-3xl max-w-lg w-full p-6 space-y-4 relative cyber-border max-h-[85vh] overflow-y-auto">
-            <button onclick="closeProjectModal()" class="absolute top-4 right-4 p-2 rounded-full bg-zinc-800 hover:bg-zinc-700 text-cyber-blue transition-colors">
-                <i data-lucide="x" class="w-5 h-5"></i>
-            </button>
-            <h3 id="modalTitle" class="font-cyber font-bold text-lg text-cyber-blue">Project Title</h3>
-            <p id="modalDesc" class="text-xs text-slate-300 leading-relaxed whitespace-pre-line"></p>
-            
-            <div class="p-3 rounded-xl bg-cyber-blue/10 border border-cyber-blue/30 space-y-2">
-                <div class="flex items-center justify-between">
-                    <span class="text-[10px] font-cyber text-cyber-blue font-bold flex items-center space-x-1">
-                        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
-                        <span>AI Analisis & Insight Proyek</span>
-                    </span>
-                    <button onclick="generateProjectAiInsight()" class="px-2.5 py-1 rounded bg-cyber-blue text-black font-bold text-[10px] font-cyber hover:opacity-90">Analisis Sekarang</button>
-                </div>
-                <div id="projectAiInsightContent" class="text-xs text-slate-300">
-                    Klik tombol di atas untuk meminta menganalisis nilai strategis proyek ini.
-                </div>
-            </div>
-
-            <div class="pt-2 flex gap-3">
-                <a href="https://wa.me/6281545842290?text=Halo%20Syafril%2C%20saya%20tertarik%20dengan%20profil%20Anda." target="_blank" rel="noopener noreferrer" class="flex-1 py-2 rounded-xl bg-cyber-blue text-black font-bold text-xs font-cyber uppercase text-center hover:opacity-90">Diskusikan / Hubungi</a>
-                <button onclick="closeProjectModal()" class="px-4 py-2 rounded-xl bg-zinc-800 text-slate-300 font-bold text-xs">Tutup</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Personality Modal -->
-    <div id="personalityModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/90 backdrop-blur-md">
-        <div class="glass-cyber rounded-3xl max-w-xl w-full p-6 space-y-4 relative cyber-border max-h-[90vh] overflow-y-auto">
-            <button onclick="closePersonalityModal()" class="absolute top-4 right-4 p-2 rounded-full bg-zinc-800 hover:bg-zinc-700 text-cyber-purple transition-colors">
-                <i data-lucide="x" class="w-5 h-5"></i>
-            </button>
-            <div class="flex items-center space-x-2 text-cyber-purple font-cyber text-sm font-bold">
-                <i data-lucide="sparkles" class="w-5 h-5"></i>
-                <span>AI Analisis Kepribadian & Work Style Anda</span>
-            </div>
-            <p class="text-xs text-slate-300">
-                Jawab 3 pertanyaan singkat di bawah ini untuk melihat bagaimana mendeskripsikan profil kepribadian dan karakter profesional Anda.
-            </p>
-            <div class="space-y-3">
-                <div>
-                    <label class="block text-xs font-cyber text-slate-300 mb-1">1. Bagaimana pendekatan utama Anda saat menghadapi masalah/kendala berat di pekerjaan?</label>
-                    <select id="pQ1" class="w-full bg-black/60 border border-cyber-purple/30 rounded-xl px-3 py-2 text-xs outline-none text-white font-sans">
-                        <option value="Menganalisis akar masalah secara sistematis berdasarkan data dan fakta yang ada">Menganalisis akar masalah secara sistematis berdasarkan data</option>
-                        <option value="Tetap tenang di bawah tekanan, cepat tanggap mencari solusi praktis">Tetap tenang di bawah tekanan, cepat tanggap mencari solusi praktis</option>
-                        <option value="Berdiskusi dan berkolaborasi bersama tim untuk merumuskan strategi bersama">Berdiskusi dan berkolaborasi bersama tim secara terbuka</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block text-xs font-cyber text-slate-300 mb-1">2. Gaya komunikasi seperti apa yang paling mencerminkan diri Anda di lingkungan kerja?</label>
-                    <select id="pQ2" class="w-full bg-black/60 border border-cyber-purple/30 rounded-xl px-3 py-2 text-xs outline-none text-white font-sans">
-                        <option value="Profesional, jelas, tegas, dan berorientasi pada pencapaian target">Profesional, jelas, tegas, dan berorientasi pada target</option>
-                        <option value="Ramah, kooperatif, dan suportif terhadap rekan satu tim">Ramah, kooperatif, dan suportif terhadap rekan tim</option>
-                        <option value="Terstruktur, detail, dan sangat menghargai ketepatan dokumentasi">Terstruktur, detail, dan menghargai dokumentasi yang rapi</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block text-xs font-cyber text-slate-300 mb-1">3. Nilai atau prinsip etos kerja terkuat yang Anda pegang teguh:</label>
-                    <select id="pQ3" class="w-full bg-black/60 border border-cyber-purple/30 rounded-xl px-3 py-2 text-xs outline-none text-white font-sans">
-                        <option value="Integritas tinggi, tanggung jawab penuh atas tugas yang diemban">Integritas tinggi & tanggung jawab penuh atas tugas</option>
-                        <option value="Haus akan pembelajaran hal baru, adaptif, dan terus berkembang">Haus pembelajaran hal baru, adaptif, & terus berkembang</option>
-                        <option value="Disiplin, konsistensi, dan ketepatan waktu dalam eksekusi proyek">Disiplin, konsistensi, & ketepatan waktu dalam eksekusi</option>
-                    </select>
-                </div>
-                <button onclick="runPersonalityAnalysis()" id="personalityBtn" class="w-full py-3 rounded-xl bg-gradient-to-r from-cyber-purple to-cyber-pink text-white font-extrabold text-xs font-cyber uppercase tracking-wider hover:opacity-90 shadow-lg shadow-purple-500/20">
-                    Analisis Kepribadian Saya
-                </button>
-            </div>
-            <div id="personalityResultArea" class="hidden p-4 rounded-xl bg-black/70 border border-cyber-purple/40 space-y-2 text-xs text-slate-200">
-                <div class="font-bold text-cyber-purple font-cyber flex items-center justify-between">
-                    <span>Hasil Analisis Kepribadian & Work Style Anda</span>
-                    <span class="px-2 py-0.5 rounded bg-cyber-purple/20 text-purple-300 border border-purple-400/30">AI Insights</span>
-                </div>
-                <div id="personalityResultText" class="leading-relaxed whitespace-pre-line text-slate-300"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- PIN & Photo Manager Modal -->
-    <div id="photoManagerModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/90 backdrop-blur-md">
-        <div class="glass-cyber rounded-3xl max-w-md w-full p-6 space-y-6 relative cyber-border">
-            <button onclick="closePhotoManagerModal()" class="absolute top-4 right-4 p-2 rounded-full bg-zinc-800 hover:bg-zinc-700 text-cyber-blue transition-colors">
-                <i data-lucide="x" class="w-5 h-5"></i>
-            </button>
-
-            <!-- PIN Form Step -->
-            <div id="pinStep" class="space-y-4 text-center">
-                <div class="w-12 h-12 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-400 flex items-center justify-center mx-auto">
-                    <i data-lucide="lock" class="w-6 h-6"></i>
-                </div>
-                <div>
-                    <h3 class="font-cyber font-bold text-base text-white">Autorisasi PIN Diperlukan</h3>
-                    <p class="text-xs text-slate-400 mt-1">Masukkan PIN untuk mengubah foto profil atau portofolio.</p>
-                </div>
-                <div class="space-y-3">
-                    <input type="password" id="pinInput" placeholder="Masukkan PIN..." maxlength="6" class="w-full bg-black/60 border border-cyber-blue/30 text-center tracking-widest text-lg py-2.5 rounded-xl focus:border-cyber-blue outline-none font-cyber">
-                    <button onclick="verifyPin()" class="w-full py-2.5 rounded-xl bg-cyber-blue text-black font-bold text-xs font-cyber uppercase tracking-wider">Verifikasi PIN</button>
-                    <p id="pinError" class="text-xs text-rose-400 hidden">PIN salah! Coba lagi.</p>
-                </div>
-            </div>
-
-            <!-- Editor Step -->
-            <div id="editorStep" class="space-y-4 hidden">
-                <div class="flex items-center space-x-2 text-emerald-400 font-cyber text-xs">
-                    <i data-lucide="check-circle" class="w-4 h-4"></i>
-                    <span>PIN Benar. Silakan Perbarui Foto.</span>
-                </div>
-
-                <div class="space-y-3">
-                    <div>
-                        <label class="block text-xs font-cyber text-slate-300 mb-1">PILIH TARGET</label>
-                        <select id="targetSelect" class="w-full bg-black/60 border border-cyber-blue/30 rounded-xl px-3 py-2 text-xs outline-none text-white font-cyber">
-                            <option value="profile">Foto Profil Utama</option>
-                            <option value="portImg1">Proyek 1 (IT Support)</option>
-                            <option value="portImg2">Proyek 2 (Monitoring)</option>
-                            <option value="portImg3">Proyek 3 (Web Platform)</option>
-                            <option value="portImg4">Proyek 4 (Project Lead)</option>
-                            <option value="portImg5">Proyek 5 (About Me)</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-cyber text-slate-300 mb-1">MASUKKAN LINK GAMBAR / DRIVE</label>
-                        <input type="url" id="newImgUrl" placeholder="https://..." class="w-full bg-black/60 border border-cyber-blue/30 rounded-xl px-3 py-2 text-xs outline-none text-white">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-cyber text-slate-300 mb-1">ATAU UPLOAD DARI PERANGKAT</label>
-                        <input type="file" id="newImgFile" accept="image/*" class="w-full bg-black/60 border border-cyber-blue/30 rounded-xl px-3 py-2 text-xs text-slate-400 file:mr-4 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-cyber-blue file:text-black hover:file:opacity-90">
-                    </div>
-                    <button onclick="saveNewPhoto()" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-cyber-blue to-cyber-purple text-black font-bold text-xs font-cyber uppercase tracking-wider">Simpan Perubahan</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- AI Chatbot Modal -->
-    <div id="aiChatModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/85 backdrop-blur-md">
-        <div class="glass-cyber rounded-3xl max-w-lg w-full p-6 space-y-4 relative cyber-border flex flex-col h-[550px]">
-            <div class="flex items-center justify-between border-b border-cyber-blue/20 pb-3">
-                <div class="flex items-center space-x-2">
-                    <div class="w-3 h-3 rounded-full bg-cyber-blue animate-ping"></div>
-                    <div>
-                        <h3 class="font-cyber font-bold text-sm text-cyber-blue">Syafril AI Assistant</h3>
-                        <p class="text-[10px] text-slate-400">Powered by Gemini 2.5 Flash</p>
-                    </div>
-                </div>
-                <button onclick="closeAiChatModal()" class="p-1.5 rounded-full bg-zinc-800 hover:bg-zinc-700 text-cyber-blue">
-                    <i data-lucide="x" class="w-4 h-4"></i>
-                </button>
-            </div>
-
-            <!-- Chat Messages Area -->
-            <div id="aiChatMessages" class="flex-grow overflow-y-auto space-y-3 pr-2 text-xs">
-                <div class="p-3 rounded-xl bg-cyber-blue/10 border border-cyber-blue/30 text-slate-200">
-                    Halo! Saya adalah Asisten AI Syafril Malik. Tanyakan apa saja tentang portofolio, keahlian IT Support, atau pengalaman proyek Syafril!
-                </div>
-            </div>
-
-            <!-- Chat Input Area -->
-            <div class="flex gap-2 pt-2 border-t border-cyber-blue/20">
-                <input type="text" id="chatInput" placeholder="Tanya tentang keahlian Syafril..." class="flex-grow bg-black/60 border border-cyber-blue/30 rounded-xl px-4 py-2 text-xs outline-none focus:border-cyber-blue" onkeydown="if(event.key==='Enter') sendAiMessage()">
-                <button onclick="sendAiMessage()" class="px-4 py-2 rounded-xl bg-cyber-blue text-black font-bold text-xs font-cyber hover:opacity-90 flex items-center space-x-1">
-                    <i data-lucide="send" class="w-3.5 h-3.5"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, collection, addDoc, onSnapshot, query, getDocs } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'syafril-portfolio-app-v3';
-        const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
-        
-        let db, auth;
-        try {
-            if (firebaseConfig && firebaseConfig.projectId) {
-                const app = initializeApp(firebaseConfig);
-                db = getFirestore(app);
-                auth = getAuth(app);
-                
-                const initAuth = async () => {
-                    try {
-                        if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                            await signInWithCustomToken(auth, __initial_auth_token);
-                        } else {
-                            await signInAnonymously(auth);
-                        }
-                        loadCommentsRealtime();
-                    } catch (authErr) {
-                        console.warn("Auth initialization fallback:", authErr);
-                        loadCommentsFallback();
-                    }
-                };
-                initAuth();
-            } else {
-                loadCommentsFallback();
-            }
-        } catch(e) {
-            console.warn("Firebase offline/fallback mode:", e);
-            loadCommentsFallback();
-        }
-
-        function loadCommentsFallback() {
-            const container = document.getElementById('commentsContainer');
-            if (container) {
-                container.innerHTML = `
-                    <div class="p-3.5 rounded-xl bg-black/50 border border-cyber-blue/20 space-y-1.5">
-                        <div class="flex items-center justify-between text-xs">
-                            <span class="font-bold text-cyber-blue font-cyber">Syafril Malik <span class="text-slate-400 font-normal">(Admin)</span></span>
-                            <span class="text-[10px] text-slate-400 font-mono">Terbaru</span>
-                        </div>
-                        <p class="text-xs text-slate-200 leading-relaxed font-sans">Selamat datang di portofolio saya! Silakan tinggalkan pesan atau komentar Anda melalui formulir di atas.</p>
-                    </div>
-                `;
-            }
-            document.getElementById('commentCountDisplay').innerText = '1';
-        }
-
-        function loadCommentsRealtime() {
-            if (!db) {
-                loadCommentsFallback();
-                return;
-            }
-            try {
-                const commentsRef = collection(db, 'artifacts', appId, 'public', 'data', 'guestbook_comments');
-                const q = query(commentsRef);
-                
-                onSnapshot(q, (snapshot) => {
-                    const container = document.getElementById('commentsContainer');
-                    if (!container) return;
-                    container.innerHTML = '';
-                    let count = 0;
-                    
-                    const comments = [];
-                    snapshot.forEach((doc) => {
-                        comments.push({ id: doc.id, ...doc.data() });
-                    });
-
-                    comments.sort((a, b) => new Date(b.timestamp || 0) - new Date(a.timestamp || 0));
-
-                    if (comments.length === 0) {
-                        container.innerHTML = '<div class="text-xs text-slate-400 p-3">Belum ada komentar tersimpan. Jadilah yang pertama berkomentar!</div>';
-                        document.getElementById('commentCountDisplay').innerText = '0';
-                        return;
-                    }
-
-                    comments.forEach((comm) => {
-                        count++;
-                        const div = document.createElement('div');
-                        div.className = 'p-3.5 rounded-xl bg-black/50 border border-cyber-blue/20 space-y-1.5 transition-all hover:border-cyber-blue/60';
-                        div.innerHTML = `
-                            <div class="flex items-center justify-between text-xs">
-                                <span class="font-bold text-cyber-blue font-cyber">${window.escapeHtml(comm.name || 'Pengunjung')} <span class="text-slate-400 font-normal">(${window.escapeHtml(comm.instansi || 'Umum')})</span></span>
-                                <span class="text-[10px] text-slate-400 font-mono">${window.escapeHtml(comm.timeString || '')}</span>
-                            </div>
-                            <p class="text-xs text-slate-200 leading-relaxed font-sans">${window.escapeHtml(comm.text || '')}</p>
-                        `;
-                        container.appendChild(div);
-                    });
-                    document.getElementById('commentCountDisplay').innerText = count;
-                }, (error) => {
-                    console.warn("Firestore snapshot warning, falling back:", error);
-                    loadCommentsFallback();
-                });
-            } catch(err) {
-                console.warn("Firestore sync error:", err);
-                loadCommentsFallback();
-            }
-        }
-
-        window.handleCommentSubmit = async function(e) {
-            e.preventDefault();
-            const nameInput = document.getElementById('commentName');
-            const instansiInput = document.getElementById('commentInstansi');
-            const textInput = document.getElementById('commentText');
-
-            if (!nameInput || !textInput) return;
-
-            const name = nameInput.value.trim();
-            const instansi = instansiInput.value.trim();
-            const text = textInput.value.trim();
-
-            if (!name || !text) return;
-
-            const now = new Date();
-            const options = { timeZone: 'Asia/Jakarta', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
-            const timeString = new Intl.DateTimeFormat('id-ID', options).format(now) + ' WIB';
-
-            const commentData = {
-                name,
-                instansi,
-                text,
-                timestamp: now.toISOString(),
-                timeString
-            };
-
-            if (db) {
-                try {
-                    const commentsRef = collection(db, 'artifacts', appId, 'public', 'data', 'guestbook_comments');
-                    await addDoc(commentsRef, commentData);
-                    document.getElementById('commentForm').reset();
-                } catch(err) {
-                    console.warn("Error adding comment to Firestore, appending locally:", err);
-                    appendLocalComment(commentData);
-                }
-            } else {
-                appendLocalComment(commentData);
-            }
-        };
-
-        function appendLocalComment(comm) {
-            const container = document.getElementById('commentsContainer');
-            if (!container) return;
-            const div = document.createElement('div');
-            div.className = 'p-3.5 rounded-xl bg-black/50 border border-cyber-blue/20 space-y-1.5';
-            div.innerHTML = `
-                <div class="flex items-center justify-between text-xs">
-                    <span class="font-bold text-cyber-blue font-cyber">${window.escapeHtml(comm.name)} <span class="text-slate-400 font-normal">(${window.escapeHtml(comm.instansi || 'Umum')})</span></span>
-                    <span class="text-[10px] text-slate-400 font-mono">${window.escapeHtml(comm.timeString)}</span>
-                </div>
-                <p class="text-xs text-slate-200 leading-relaxed font-sans">${window.escapeHtml(comm.text)}</p>
-            `;
-            container.prepend(div);
-            document.getElementById('commentForm').reset();
-            const countDisplay = document.getElementById('commentCountDisplay');
-            if (countDisplay) {
-                countDisplay.innerText = parseInt(countDisplay.innerText || '0') + 1;
-            }
-        }
-
-        window.escapeHtml = function(str) {
-            if (!str) return '';
-            return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
-        }
-    </script>
-
-    <script>
-        lucide.createIcons();
-
-        // ⚠️ KONFIGURASI API KEY GEMINI DI SINI ⚠️
-        // Masukkan kunci API Google AI Studio Anda yang valid di bawah ini agar fitur AI berjalan di GitHub Pages.
-        const GEMINI_API_KEY = "GEMINI_API_KEY"; 
-
-        let currentSelectedProject = { title: '', desc: '' };
-
-        // Story Modal Functions
-        function showStoryModal() {
-            document.getElementById('storyModal').classList.remove('hidden');
-            document.getElementById('storyModal').classList.add('flex');
-        }
-        function closeStoryModal() {
-            document.getElementById('storyModal').classList.add('hidden');
-            document.getElementById('storyModal').classList.remove('flex');
-        }
-
-        // Project Modal Functions
-        function openProjectModal(title, desc, category, imgUrl) {
-            currentSelectedProject = { title, desc };
-            document.getElementById('modalTitle').innerText = title;
-            document.getElementById('modalDesc').innerText = desc;
-            document.getElementById('projectAiInsightContent').innerText = 'Klik tombol di atas untuk meminta menganalisis nilai strategis proyek ini.';
-            document.getElementById('projectModal').classList.remove('hidden');
-            document.getElementById('projectModal').classList.add('flex');
-        }
-        function closeProjectModal() {
-            document.getElementById('projectModal').classList.add('hidden');
-            document.getElementById('projectModal').classList.remove('flex');
-        }
-
-        // Gemini API Feature 2: Project AI Insight Analyzer
-        async function generateProjectAiInsight() {
-            const insightBox = document.getElementById('projectAiInsightContent');
-            if (!GEMINI_API_KEY || GEMINI_API_KEY.includes("MASUKKAN")) {
-                insightBox.innerHTML = '<span class="text-rose-400">API Key belum diatur di dalam kode. Silakan masukkan API Key Gemini Anda pada variabel `GEMINI_API_KEY`.</span>';
-                return;
-            }
-
-            insightBox.innerHTML = '<span class="text-cyan-400 animate-pulse">sedang menganalisis nilai strategis proyek...</span>';
-
-            try {
-                const systemPrompt = "Anda adalah konsultan IT senior dan ahli rekrutmen. Berikan analisis singkat (1-2 paragraf padat) mengenai nilai strategis dan keunggulan teknis dari proyek IT Syafril Malik ini dalam bahasa Indonesia yang profesional.";
-                const userPrompt = `Analisis proyek "${currentSelectedProject.title}" dengan deskripsi: "${currentSelectedProject.desc}"`;
-
-                const payload = {
-                    contents: [{ role: 'user', parts: [{ text: userPrompt }] }],
-                    systemInstruction: { parts: [{ text: systemPrompt }] }
-                };
-
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`;
-
-                let response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                if (!response.ok) {
-                    throw new Error(`HTTP Error: ${response.status}`);
-                }
-                const result = await response.json();
-                const text = result.candidates?.[0]?.content?.parts?.[0]?.text || "Analisis tidak tersedia.";
-                insightBox.innerText = text;
-            } catch (err) {
-                insightBox.innerHTML = '<span class="text-rose-400">Gagal terhubung ke Gemini API. Periksa kembali keaktifan API Key dan kuota Anda.</span>';
-            }
-        }
-
-        function openPersonalityModal() {
-            document.getElementById('personalityModal').classList.remove('hidden');
-            document.getElementById('personalityModal').classList.add('flex');
-            document.getElementById('personalityResultArea').classList.add('hidden');
-        }
-        function closePersonalityModal() {
-            document.getElementById('personalityModal').classList.add('hidden');
-            document.getElementById('personalityModal').classList.remove('flex');
-        }
-
-        async function runPersonalityAnalysis() {
-            const q1 = document.getElementById('pQ1').value;
-            const q2 = document.getElementById('pQ2').value;
-            const q3 = document.getElementById('pQ3').value;
-            const resultArea = document.getElementById('personalityResultArea');
-            const resultText = document.getElementById('personalityResultText');
-
-            resultArea.classList.remove('hidden');
-            if (!GEMINI_API_KEY || GEMINI_API_KEY.includes("MASUKKAN")) {
-                resultText.innerText = "API Key belum diatur. Harap masukkan API Key Gemini yang valid pada variabel `GEMINI_API_KEY` di baris kode.";
-                return;
-            }
-
-            resultText.innerHTML = '<span class="text-purple-400 animate-pulse">sedang menyusun profil psikologis & gaya kerja profesional Anda...</span>';
-
-            try {
-                const systemPrompt = "Anda adalah psikolog industri dan konsultan pengembangan karir profesional. Berdasarkan kuis kepribadian yang diisi oleh pengunjung/user website, buatkan analisis kepribadian, kekuatan profesional, dan saran pengembangan karir yang memotivasi dalam 2-3 paragraf berbahasa Indonesia yang memukau.";
-                const userPrompt = `Jawaban kuis pengunjung:\n1. Pendekatan mengatasi masalah: ${q1}\n2. Gaya komunikasi: ${q2}\n3. Etos kerja: ${q3}`;
-
-                const payload = {
-                    contents: [{ role: 'user', parts: [{ text: userPrompt }] }],
-                    systemInstruction: { parts: [{ text: systemPrompt }] }
-                };
-
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`;
-
-                let response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                if (!response.ok) throw new Error("API failed");
-                const result = await response.json();
-                const text = result.candidates?.[0]?.content?.parts?.[0]?.text || "Analisis kepribadian tidak tersedia.";
-                resultText.innerText = text;
-            } catch (err) {
-                resultText.innerText = "Gagal memproses analisis kepribadian. Periksa koneksi internet atau status API Key Anda.";
-            }
-        }
-
-        // PIN & Photo Manager Modal
-        function openPhotoManagerModal() {
-            document.getElementById('photoManagerModal').classList.remove('hidden');
-            document.getElementById('photoManagerModal').classList.add('flex');
-            document.getElementById('pinInput').value = '';
-            document.getElementById('pinError').classList.add('hidden');
-            document.getElementById('pinStep').classList.remove('hidden');
-            document.getElementById('editorStep').classList.add('hidden');
-        }
-        function closePhotoManagerModal() {
-            document.getElementById('photoManagerModal').classList.add('hidden');
-            document.getElementById('photoManagerModal').classList.remove('flex');
-        }
-
-        function verifyPin() {
-            const pin = document.getElementById('pinInput').value.trim();
-            if (pin === '400300') {
-                document.getElementById('pinStep').classList.add('hidden');
-                document.getElementById('editorStep').classList.remove('hidden');
-            } else {
-                document.getElementById('pinError').classList.remove('hidden');
-            }
-        }
-
-        function saveNewPhoto() {
-            const target = document.getElementById('targetSelect').value;
-            const urlInput = document.getElementById('newImgUrl').value.trim();
-            const fileInput = document.getElementById('newImgFile').files[0];
-
-            if (fileInput) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    applyImageChange(target, e.target.result);
-                };
-                reader.readAsDataURL(fileInput);
-            } else if (urlInput) {
-                let finalUrl = urlInput;
-                if (urlInput.includes('drive.google.com')) {
-                    const match = urlInput.match(/\/d\/([a-zA-Z0-9_-]+)/);
-                    if (match && match[1]) {
-                        finalUrl = `https://lh3.googleusercontent.com/d/${match[1]}=s1000`;
-                    }
-                }
-                applyImageChange(target, finalUrl);
-            } else {
-                alert("Masukkan URL gambar atau pilih file terlebih dahulu.");
-            }
-        }
-
-        function applyImageChange(target, src) {
-            if (target === 'profile') {
-                document.getElementById('profileImageDisplay').src = src;
-                document.getElementById('storyModalImg').src = src;
-            } else {
-                document.getElementById(target).src = src;
-            }
-            closePhotoManagerModal();
-        }
-
-        // AI Chatbot Modal Functions
-        window.openAiChatModal = function() {
-            document.getElementById('aiChatModal').classList.remove('hidden');
-            document.getElementById('aiChatModal').classList.add('flex');
-            const chatMessages = document.getElementById('aiChatMessages');
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-        window.closeAiChatModal = function() {
-            document.getElementById('aiChatModal').classList.add('hidden');
-            document.getElementById('aiChatModal').classList.remove('flex');
-        }
-
-        window.sendAiMessage = async function() {
-            const inputEl = document.getElementById('chatInput');
-            if (!inputEl) return;
-            const prompt = inputEl.value.trim();
-            if (!prompt) return;
-
-            const chatMessages = document.getElementById('aiChatMessages');
-            inputEl.value = '';
-
-            const now = new Date();
-            const options = { timeZone: 'Asia/Jakarta', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
-            const timeString = new Intl.DateTimeFormat('id-ID', options).format(now);
-
-            // 1. Tampilkan pertanyaan user ke chat box secara instan
-            const userDiv = document.createElement('div');
-            userDiv.className = 'p-3 rounded-xl bg-black/60 border border-cyber-purple/30 text-slate-200 ml-6 text-right space-y-1';
-            userDiv.innerHTML = `
-                <div class="text-[9px] text-slate-400 font-mono">Pengunjung Website • ${timeString}</div>
-                <div>${window.escapeHtml(prompt)}</div>
-            `;
-            chatMessages.appendChild(userDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-
-            if (!GEMINI_API_KEY || GEMINI_API_KEY.includes("MASUKKAN")) {
-                const errDiv = document.createElement('div');
-                errDiv.className = 'py-3 px-3 rounded-xl bg-rose-950/40 border border-rose-500/30 text-rose-300 mr-6 text-xs';
-                errDiv.innerText = '⚠️ API Key belum dimasukkan. Harap masukkan API Key Gemini Anda pada variabel GEMINI_API_KEY di dalam kode agar Syafril AI dapat merespons.';
-                chatMessages.appendChild(errDiv);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-                return;
-            }
-
-            // 2. Tampilkan indikator loading AI
-            const loadingDiv = document.createElement('div');
-            loadingDiv.className = 'p-3 rounded-xl bg-cyber-blue/10 border border-cyber-blue/30 text-cyber-blue animate-pulse mr-6';
-            loadingDiv.innerText = 'Syafril AI sedang merespons...';
-            chatMessages.appendChild(loadingDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-
-            try {
-                const systemPrompt = "Anda adalah asisten AI resmi untuk Syafril Malik, seorang IT Specialist & IT Project Management Professional lulusan Teknik Informatika UNPAM dengan keahlian di bidang IT Support, IT Monitoring, dan Web Development. Jawab pertanyaan dengan ramah, profesional, dan informatif dalam bahasa Indonesia singkat padat.";
-                
-                const payload = {
-                    contents: [{ role: 'user', parts: [{ text: prompt }] }],
-                    systemInstruction: { parts: [{ text: systemPrompt }] }
-                };
-
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`;
-
-                let response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                if (!response.ok) throw new Error("API call failed");
-                
-                const result = await response.json();
-                const aiText = result.candidates?.[0]?.content?.parts?.[0]?.text || "Maaf, terjadi gangguan pada respons AI.";
-
-                // Hapus loading
-                if (loadingDiv.parentNode) {
-                    chatMessages.removeChild(loadingDiv);
-                }
-
-                // Tampilkan jawaban AI
-                const aiDiv = document.createElement('div');
-                aiDiv.className = 'py-3 px-3 rounded-xl bg-cyber-blue/10 border border-cyber-blue/30 text-slate-200 mr-6 space-y-1';
-                aiDiv.innerHTML = `
-                    <div class="text-[9px] text-cyber-blue font-cyber">Syafril AI</div>
-                    <div>${window.escapeHtml(aiText)}</div>
-                `;
-                chatMessages.appendChild(aiDiv);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-
-            } catch (err) {
-                if (loadingDiv && loadingDiv.parentNode) {
-                    chatMessages.removeChild(loadingDiv);
-                }
-                const aiDiv = document.createElement('div');
-                aiDiv.className = 'py-3 px-3 rounded-xl bg-rose-950/40 border border-rose-500/30 text-rose-300 mr-6 space-y-1';
-                aiDiv.innerHTML = `
-                    <div class="text-[9px] text-rose-400 font-cyber">Error / API Key Invalid</div>
-                    <div>Gagal terhubung ke API Gemini. Pastikan API key Anda aktif dan kuota belum habis.</div>
-                `;
-                chatMessages.appendChild(aiDiv);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }
-        }
-    </script>
+<body>
+<div class="col">
+<div class="top"><b>Syafril Malik</b><span id="own"></span></div>
+
+<header class="me">
+<div>
+<h1>Syafril Malik</h1>
+<p class="role">IT &amp; Monitoring</p>
+<p class="org">PT Bintang Jasa Artha Kelola</p>
+<div class="st"><i></i>Siaga dan terpantau</div>
+</div>
+<img class="av" id="me" src="data:image/jpeg;base64,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" alt="Foto Syafril Malik mengenakan jas biru tua dan dasi">
+</header>
+<p class="bio">Penggiat IT yang menjaga sistem tetap berjalan, mendokumentasikan prosesnya, dan terus belajar untuk naik level.</p>
+<div class="act"><button class="btn p" id="ask" type="button">Tanya asisten AI</button><a class="btn" href="#kontak">Kontak</a></div>
+
+<div class="tabs" role="tablist" id="tabs"></div>
+<div class="admin" id="admin"><h2 id="ft"></h2><div class="f" id="fm"></div></div>
+<main id="feed"></main>
+<div class="ct" id="kontak">Tautan LinkedIn dan email akan ditambahkan di sini.<br>© 2026 Syafril Malik</div>
+</div>
+
+<div id="fab"><button class="btn" id="fabb" type="button">Tanya AI</button></div>
+<div id="chat" role="dialog" aria-label="Asisten AI">
+<header><span>Asisten Syafril</span><button id="cx" type="button">Tutup</button></header>
+<div id="msgs"><div class="m a">Halo! Saya asisten AI di profil Syafril. Tanyakan tentang latar belakang, keahlian, atau proyeknya.</div></div>
+<form id="cf"><input id="ci" placeholder="Tulis pertanyaan…" aria-label="Pertanyaan" autocomplete="off"><button class="btn p" type="submit">Kirim</button></form>
+</div>
+
+<script>
+const $=s=>document.querySelector(s);
+const T={
+ posts:{n:'Postingan',add:'Buat postingan',f:{desc:'Apa yang ingin Anda bagikan?'},empty:'Belum ada postingan.'},
+ projects:{n:'Proyek',add:'Tambah proyek',f:{title:'Nama proyek',desc:'Deskripsi singkat dan hasilnya',tags:'Teknologi, pisahkan dengan koma',url:'Tautan (opsional, diawali https://)'},empty:'Belum ada proyek.'},
+ skills:{n:'Keahlian',add:'Tambah keahlian',f:{title:'Keahlian',desc:'Penjelasan atau tingkat penguasaan',tags:'Alat terkait, pisahkan dengan koma'},empty:'Belum ada keahlian.'},
+ experience:{n:'Pengalaman',add:'Tambah pengalaman',f:{title:'Jabatan',sub:'Perusahaan',period:'Periode (contoh: 2023 – sekarang)',desc:'Tugas dan pencapaian'},empty:'Belum ada pengalaman.'},
+ certs:{n:'Sertifikasi',add:'Tambah sertifikasi',f:{title:'Nama sertifikasi',sub:'Penerbit',period:'Tahun',url:'Tautan kredensial (opsional)'},empty:'Belum ada sertifikasi.'}
+};
+let tab='posts',pending=[],data={posts:[],projects:[],skills:[],experience:[],certs:[]},cols={},owner=false,editId=null,sample=null,hist=[];
+function safeUrl(u){try{const x=new URL(u);return x.protocol==='https:'||x.protocol==='http:'?x.href:''}catch(e){return''}}
+function el(t,c,x){const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+function ago(t){if(!t)return'';const s=(Date.now()-t)/1000;if(s<60)return'baru saja';if(s<3600)return Math.floor(s/60)+' mnt';if(s<86400)return Math.floor(s/3600)+' jam';if(s<604800)return Math.floor(s/86400)+' hr';return new Date(t).toLocaleDateString('id-ID',{day:'numeric',month:'short',year:'numeric'})}
+
+function tabsUI(){
+  const b=$('#tabs');b.textContent='';
+  Object.keys(T).forEach(k=>{const x=el('button','',T[k].n);x.type='button';x.setAttribute('role','tab');x.setAttribute('aria-selected',k===tab);x.onclick=()=>{tab=k;editId=null;tabsUI();form();render()};b.appendChild(x)});
+}
+function form(){
+  pending=[];const c=T[tab],fm=$('#fm');fm.textContent='';$('#ft').textContent=editId?'Ubah entri':c.add;
+  Object.keys(c.f).forEach(k=>{const i=k==='desc'?el('textarea'):el('input');if(k==='desc')i.rows=3;i.id='f_'+k;i.placeholder=c.f[k];i.setAttribute('aria-label',c.f[k]);i.maxLength=k==='desc'?400:120;if(editId){const p=data[tab].find(d=>d.id===editId);if(p)i.value=k==='tags'?(p.tags||[]).join(', '):(p[k]||'')}fm.appendChild(i)});
+  const r=el('div','row'),s=el('button','btn p','Simpan');s.type='button';s.onclick=save;r.appendChild(s);
+  if(editId){const x=el('button','btn','Batal');x.type='button';x.onclick=()=>{editId=null;form()};r.appendChild(x)}
+  if(tab==='posts'){
+    const pk=el('input'),pv=el('div','pv');pk.type='file';pk.accept='image/*,video/*';pk.multiple=true;pk.setAttribute('aria-label','Pilih foto atau video (maks. 4 file, 20 MB per file)');
+    const pvr=()=>{pv.textContent='';pending.forEach((f,i)=>{const c=el('span','pvi',f.name),x=el('button','','×');x.type='button';x.setAttribute('aria-label','Hapus lampiran');x.onclick=()=>{pending.splice(i,1);pvr()};c.appendChild(x);pv.appendChild(c)})};
+    pk.onchange=()=>{pending=[...pending,...[...pk.files].filter(f=>f.size<=20*1024*1024)].slice(0,4);pk.value='';pvr()};
+    fm.append(pk,pv);
+  }
+  fm.appendChild(r);
+}
+async function save(){
+  const c=T[tab],d={updated:Date.now()};
+  for(const k in c.f){const v=($('#f_'+k).value||'').trim();d[k]=k==='tags'?v.split(',').map(s=>s.trim()).filter(Boolean).slice(0,8):k==='url'?(v&&safeUrl(v)?safeUrl(v):''):v}
+  if(tab==='posts'){
+    if(!d.desc&&!pending.length){$('#f_desc').focus();return}
+    const btn=$('#fm .btn.p');btn.disabled=true;btn.textContent='Mengunggah…';
+    try{
+      const media=[];
+      if(pending.length){const as=await claude.use('assets');if(!as)throw new Error('unggah media belum tersedia');for(const f of pending){const r=await as.upload(f);media.push({url:r.url,type:f.type.startsWith('video')?'video':'image'})}}
+      if(media.length)d.media=(editId?((data.posts.find(x=>x.id===editId)||{}).media||[]):[]).concat(media);
+      if(editId)await cols[tab].doc(editId).update(d);else{d.created=Date.now();await cols[tab].add(d)}
+      editId=null;form();
+    }catch(e){alert('Belum terkirim: '+(e&&e.message?e.message:'coba lagi.'));btn.disabled=false;btn.textContent='Simpan'}
+    return;
+  }
+  if(!d.title){$('#f_title').focus();return}
+  try{if(editId)await cols[tab].doc(editId).update(d);else{d.created=Date.now();await cols[tab].add(d)}editId=null;form()}
+  catch(e){alert('Belum tersimpan. Pastikan Anda masuk sebagai pemilik halaman.')}
+}
+function render(){
+  const f=$('#feed');f.textContent='';const L=data[tab];
+  if(!L.length){f.appendChild(el('div','empty',owner?T[tab].empty+' Isi formulir di atas untuk menambahkan.':T[tab].empty.replace('Belum ada','Segera hadir:').replace(/\.$/,'.')));return}
+  L.forEach(p=>{
+    const w=el('article','post'),r=el('div','rail'),a=el('img','av');a.src=$('#me').src;a.alt='';r.append(a,el('div','line'));
+    const b=el('div','pb'),h=el('div','ph');h.appendChild(el('b','',tab==='posts'?'Syafril Malik':(p.title||'')));const pd=tab==='posts'?ago(p.created):p.period;if(pd)h.appendChild(el('span','',pd));b.appendChild(h);
+    if(p.sub)b.appendChild(el('div','sub',p.sub));
+    if(p.desc)b.appendChild(el('p','',p.desc));
+    if(p.media&&p.media.length){const g=el('div','md m'+Math.min(p.media.length,4));p.media.forEach(m=>{const u2=String(m.url||'');if(!u2.startsWith('/_blob/')&&!u2.startsWith('https://'))return;let n;if(m.type==='video'){n=el('video');n.src=u2;n.controls=true;n.preload='metadata';n.playsInline=true}else{n=el('img');n.src=u2;n.alt='Foto postingan';n.loading='lazy';n.onclick=()=>window.open(u2,'_blank')}g.appendChild(n)});b.appendChild(g)}
+    if(p.tags&&p.tags.length){const g=el('div','tags');p.tags.forEach(t=>g.appendChild(el('span','',t)));b.appendChild(g)}
+    const u=safeUrl(p.url||'');if(u){const l=el('a','lk','Buka tautan');l.href=u;l.target='_blank';l.rel='noopener noreferrer';b.appendChild(l)}
+    if(owner){const t=el('div','tools'),e=el('button','','Ubah'),x=el('button','','Hapus');e.type=x.type='button';
+      e.onclick=()=>{editId=p.id;form();$('#admin').scrollIntoView({block:'center'})};
+      x.onclick=async()=>{if(confirm('Hapus “'+(p.title||'postingan ini')+'”?')){try{await cols[tab].doc(p.id).delete()}catch(err){alert('Gagal menghapus. Coba lagi.')}}};
+      t.append(e,x);b.appendChild(t)}
+    w.append(r,b);f.appendChild(w);
+  });
+}
+// Chat
+function ctx(){
+  const s=k=>data[k].length?data[k].map(p=>[p.title,p.sub,p.period,p.desc,(p.tags||[]).join(', ')].filter(Boolean).join('; ')).join(' | '):'belum ada';
+  return 'Kamu adalah asisten AI di web profil pribadi Syafril Malik. Jawab dalam bahasa Indonesia, singkat, ramah, dan profesional kepada pengunjung yang bertanya tentang Syafril. Fakta dasar: penggiat IT, bekerja sebagai IT & Monitoring di PT Bintang Jasa Artha Kelola, aktif mengembangkan diri. Proyek: '+s('projects')+'. Keahlian: '+s('skills')+'. Pengalaman: '+s('experience')+'. Sertifikasi: '+s('certs')+'. Postingan terbaru: '+(data.posts.slice(0,5).map(p=>p.desc).filter(Boolean).join(' | ')||'belum ada')+'. Jangan mengarang informasi lain (kontak, gaji, pengalaman atau sertifikat yang tidak tercantum). Jika tidak tahu, katakan belum ada informasinya dan sarankan menghubungi Syafril langsung. Tolak permintaan yang tidak berkaitan dengan profil ini.';
+}
+function add(role,text){const m=el('div','m '+(role==='user'?'u':'a'),text);$('#msgs').appendChild(m);$('#msgs').scrollTop=1e9;return m}
+function toggle(){$('#chat').classList.toggle('on');if($('#chat').classList.contains('on'))$('#ci').focus()}
+$('#fabb').onclick=toggle;$('#ask').onclick=()=>{if(sample)toggle();else alert('Asisten AI belum tersedia di tampilan ini.')};
+$('#cx').onclick=()=>$('#chat').classList.remove('on');
+$('#cf').onsubmit=async e=>{
+  e.preventDefault();const q=$('#ci').value.trim();if(!q||!sample)return;$('#ci').value='';
+  add('user',q);hist.push({role:'user',content:q});const m=add('assistant','Berpikir…');
+  const h=hist.slice(-8);while(h.length&&h[0].role!=='user')h.shift();
+  h[0]={role:'user',content:ctx()+'\n\nPertanyaan pengunjung: '+h[0].content};
+  try{const r=await sample(h,{cache:false,modelTier:'quick',onText:u=>{m.textContent=u.text}});m.textContent=r.text;hist.push({role:'assistant',content:r.text})}
+  catch(err){m.textContent=err&&err.code==='rate_limited'?'Terlalu banyak pertanyaan. Coba lagi sebentar lagi.':'Asisten belum bisa menjawab saat ini.'}
+};
+tabsUI();render();
+(async()=>{
+  if(!window.claude)return;
+  try{const u=await claude.use('user');owner=!!(u&&u.isOwner())}catch(e){}
+  if(owner){$('#admin').classList.add('on');$('#own').textContent='Mode pemilik';form();render()}
+  try{const db=await claude.use('db');if(db)Object.keys(T).forEach(k=>{cols[k]=db.collection(k);cols[k].onSnapshot(s=>{data[k]=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.created||0)-(a.created||0));if(k===tab)render()},()=>{})})}catch(e){}
+  try{sample=await claude.use('sample');if(sample)$('#fab').style.display='block'}catch(e){}
+})();
+</script>
 </body>
 </html>
